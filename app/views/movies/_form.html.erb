@@ -1,0 +1,95 @@
+<% form_for(@movie) do |f| %>
+  <%= f.error_messages %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :alt_title %><br />
+    <%= f.text_field :alt_title %>
+  </div>
+  <div class="field">
+    <%= f.label :origin %><br />
+    <%= f.text_field :origin %>
+  </div>
+  <div class="field">
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :plot %><br />
+    <%= f.text_area :plot %>
+  </div>
+  <div class="field">
+    <%= f.label :url_imdb %><br />
+    <%= f.text_field :url_imdb %>
+  </div>
+  <div class="field">
+    <%= f.label :url_allocine %><br />
+    <%= f.text_field :url_allocine %>
+  </div>
+  <div class="field">
+    <%= f.label :imdb_score %><br />
+    <%= f.text_field :imdb_score %>
+  </div>
+  <div class="field">
+    <%= f.label :quality %><br />
+    <%= f.text_field :quality %>
+  </div>
+  <div class="field">
+    <%= f.label :languages %><br />
+    <%= f.text_field :languages %>
+  </div>
+  <div class="field">
+    <%= f.label :subs %><br />
+    <%= f.text_field :subs %>
+  </div>
+  <div class="field">
+    <%= f.label :cast %><br />
+    <%= f.text_area :cast %>
+  </div>
+  <div class="field">
+    <%= f.label :director %><br />
+    <%= f.text_field :director %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :format %><br />
+    <%= f.text_field :format %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :youtube_url %><br />
+    <%= f.text_field :youtube_url %>
+  </div>
+  <div class="field">
+    <%= f.label :embed_movie %><br />
+    <%= f.text_area :embed_movie %>
+  </div>
+  <div class="field">
+    <%= f.label :apple_url %><br />
+    <%= f.text_field :apple_url %>
+  </div>
+  <div class="field">
+    <%= f.label :amazon_url %><br />
+    <%= f.text_field :amazon_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

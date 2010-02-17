@@ -1,0 +1,49 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  alt_title: MyString
+  origin: MyString
+  filename: MyString
+  body: MyText
+  plot: MyText
+  url_imdb: MyString
+  url_allocine: MyString
+  imdb_score: MyString
+  quality: MyString
+  languages: MyString
+  subs: MyString
+  cast: MyText
+  director: MyString
+  country: MyString
+  size: MyString
+  format: MyString
+  user_id: 1
+  youtube_url: MyString
+  embed_movie: MyText
+  apple_url: MyString
+  amazon_url: MyString
+
+two:
+  title: MyString
+  alt_title: MyString
+  origin: MyString
+  filename: MyString
+  body: MyText
+  plot: MyText
+  url_imdb: MyString
+  url_allocine: MyString
+  imdb_score: MyString
+  quality: MyString
+  languages: MyString
+  subs: MyString
+  cast: MyText
+  director: MyString
+  country: MyString
+  size: MyString
+  format: MyString
+  user_id: 1
+  youtube_url: MyString
+  embed_movie: MyText
+  apple_url: MyString
+  amazon_url: MyString

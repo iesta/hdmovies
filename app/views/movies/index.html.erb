@@ -3,9 +3,7 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Origin</th>
-    <th>Url imdb</th>
-    <th>Imdb score</th>
+    <th>Imdb</th>
     <th>Quality</th>
     <th>Languages</th>
     <th>Subs</th>
@@ -23,9 +21,8 @@
 <% @movies.each do |movie| %>
   <tr>
     <td><%= movie.title %></td>
-    <td><%= movie.origin %></td>
-    <td><%= movie.url_imdb %></td>
-    <td><%= movie.imdb_score %></td>
+    <td><%= link_to movie.imdb_score, movie.url_imdb %></td>
+    <td><%=  %></td>
     <td><%= movie.quality %></td>
     <td><%= movie.languages %></td>
     <td><%= movie.subs %></td>

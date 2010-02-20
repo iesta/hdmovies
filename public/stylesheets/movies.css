@@ -1,4 +1,4 @@
-body { background: #AAAAAA; color: #333; }
+body { background: #336699; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -60,7 +60,7 @@ div.field, div.actions {
 }
 
 #container {
-	width:900px;
+	width:960px;
 	border: 2px solid black;
 	background: white;
 	padding: 10px;

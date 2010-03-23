@@ -1,4 +1,6 @@
 Hdmovies::Application.routes.draw do |map|
+  resources :critics
+
   resources :movies
 
   # The priority is based upon order of creation:

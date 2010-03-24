@@ -7,13 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<div id="container">
+<div id="container">
+<div id="logo"><strong>H.D.M.O.V.I.E.S.</strong></div>
 <div class="menu" style="float:right">
-<a href="/movies/new" id="new">new</a>	
-<a href="/movies" id="list">list</a>
+<a href="/movies/new" id="new">new movie</a>
+<a href="/movies" id="list">movies</a>
+<a href="/critics" id="list">critics</a>
 </div>
 <p class="notice"><%= notice %></p>
-
 <div class="content">
 <%= yield %>
 </div>

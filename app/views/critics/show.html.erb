@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%= @critic.user_id %>
+</p>
+
+<p>
+  <b>Movie:</b>
+  <%= @critic.movie_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @critic.content %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @critic.score %>
+</p>
+
+
+<%= link_to 'Edit', edit_critic_path(@critic) %> |
+<%= link_to 'Back', critics_path %>

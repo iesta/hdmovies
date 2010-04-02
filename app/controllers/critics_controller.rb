@@ -1,4 +1,5 @@
 class CriticsController < ApplicationController
+  before_filter :require_user
   # GET /critics
   # GET /critics.xml
   def index

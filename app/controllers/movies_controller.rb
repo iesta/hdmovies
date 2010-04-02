@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-
+  before_filter :require_user
   # GET /movies
   # GET /movies.xml
   def index

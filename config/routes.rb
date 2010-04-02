@@ -8,6 +8,8 @@ Hdmovies::Application.routes.draw do |map|
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
+  root :to => "movies#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

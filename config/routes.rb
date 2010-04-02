@@ -1,4 +1,6 @@
 Hdmovies::Application.routes.draw do |map|
+  resources :users
+
   resources :critics
 
   resources :movies

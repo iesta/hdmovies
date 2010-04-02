@@ -10,6 +10,13 @@
 <div id="container">
 <div id="logo"><strong>H.D.M.O.V.I.E.S.</strong></div>
 <div class="menu" style="float:right">
+	<% if current_user %>
+	    <%= link_to "Edit Profile", edit_user_path(:current) %> |
+	    <%= link_to "Logout", logout_path %>
+	  <% else %>
+	    <%= link_to "Register", new_user_path %> |
+	    <%= link_to "Login", login_path %>
+	  <% end %>
 <a href="/movies/new" id="new">new movie</a>
 <a href="/movies" id="list">movies</a>
 <a href="/critics" id="list">critics</a>

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th></th>
     <th>Title</th>
     <th>Imdb</th>
     <th>Quality</th>
@@ -20,6 +21,7 @@
 
 <% @movies.each do |movie| %>
   <tr>
+	<td><%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %></td>
     <td><%= movie.title %></td>
     <td><%= link_to movie.imdb_score, movie.url_imdb %></td>
     <td><%= movie.quality %></td>

@@ -12,6 +12,7 @@ gem "rails", "3.0.0.rc"
 gem "sqlite3-ruby", :require => "sqlite3"
 #gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 ## Bundle the gems you use:
 # gem "bj"

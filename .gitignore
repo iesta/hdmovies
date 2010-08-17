@@ -4,3 +4,4 @@ tmp/cache/*
 tmp/sessions/*
 tmp/sockets/*
 tmp/pids/*
+public/assets/*

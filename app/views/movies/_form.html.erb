@@ -2,17 +2,35 @@
   <%= f.error_messages %>
 
 <div style="float:right">
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body, :rows => 7 %>
+  </div>
+  <div class="field">
+    <%= f.label :plot %><br />
+    <%= f.text_area :plot, :rows => 7 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cast %><br />
+    <%= f.text_area :cast, :rows => 5 %>
+  </div>
+<hr>
+
   <div>
     <%= f.label(:photo, 'Upload photo') %>
     <%= f.file_field(:photo) %>
   </div>
   <%- unless @movie.new_record? || !@movie.photo? -%>
     <div>
-      <%= f.label(:delete_photo, 'Delete photo') %>
-      <%= image_tag(@movie.photo.url, :alt => 'Photo', :title => 'Current photo') %>
-      <%= f.check_box(:delete_photo) %>
+  		<%= f.label(:delete_photo, 'Delete photo') %>
+  		<%= f.check_box(:delete_photo) %>
+	<br>
+      <%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %>
+    
     </div>
   <%- end -%>
+
 </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -23,21 +41,19 @@
     <%= f.text_field :alt_title %>
   </div>
   <div class="field">
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
     <%= f.label :origin %><br />
-    <%= f.text_field :origin %>
+    <%= f.select :origin, ['hdfrench','tehconnection','bt','other'] %>
   </div>
   <div class="field">
     <%= f.label :filename %><br />
     <%= f.text_field :filename %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :plot %><br />
-    <%= f.text_area :plot %>
-  </div>
+
   <div class="field">
     <%= f.label :url_imdb %><br />
     <%= f.text_field :url_imdb %>
@@ -52,7 +68,7 @@
   </div>
   <div class="field">
     <%= f.label :quality %><br />
-    <%= f.text_field :quality %>
+    <%= f.select :quality, ['720p','1080p','dvd','other'] %>
   </div>
   <div class="field">
     <%= f.label :languages %><br />
@@ -61,10 +77,6 @@
   <div class="field">
     <%= f.label :subs %><br />
     <%= f.text_field :subs %>
-  </div>
-  <div class="field">
-    <%= f.label :cast %><br />
-    <%= f.text_area :cast %>
   </div>
   <div class="field">
     <%= f.label :director %><br />
@@ -80,7 +92,7 @@
   </div>
   <div class="field">
     <%= f.label :format %><br />
-    <%= f.text_field :format %>
+    <%= f.select :format, ['mkv','avi','mov','other'] %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
@@ -92,7 +104,7 @@
   </div>
   <div class="field">
     <%= f.label :embed_movie %><br />
-    <%= f.text_area :embed_movie %>
+    <%= f.text_area :embed_movie, :rows => 2 %>
   </div>
   <div class="field">
     <%= f.label :apple_url %><br />

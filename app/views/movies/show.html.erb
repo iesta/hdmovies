@@ -1,11 +1,23 @@
+<div align="right">
+<%= link_to 'Edit this movie', edit_movie_path(@movie) %>
+</div>
+<h1><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
+
+
+<%- unless !@movie.photo? -%>
+  <div>
+    <%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo', :align => 'right') %>
+  </div>
+<%- end -%>
+
 <p>
-  <b>Title:</b>
-  <%= @movie.title %>
+  <em><%= @movie.alt_title %></em>
 </p>
 
 <p>
-  <b>Alt title:</b>
-  <%= @movie.alt_title %>
+  <b>imdb:</b>
+  <strong><%= @movie.imdb_score %></strong>
+  <%= link_to @movie.url_imdb %>
 </p>
 
 <p>
@@ -28,20 +40,12 @@
   <%= @movie.plot %>
 </p>
 
-<p>
-  <b>Url imdb:</b>
-  <%= @movie.url_imdb %>
-</p>
 
 <p>
   <b>Url allocine:</b>
   <%= @movie.url_allocine %>
 </p>
 
-<p>
-  <b>Imdb score:</b>
-  <%= @movie.imdb_score %>
-</p>
 
 <p>
   <b>Quality:</b>
@@ -75,7 +79,7 @@
 
 <p>
   <b>Size:</b>
-  <%= @movie.size %>
+  <%= @movie.size %> Gb
 </p>
 
 <p>
@@ -107,7 +111,3 @@
   <b>Amazon url:</b>
   <%= @movie.amazon_url %>
 </p>
-
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>

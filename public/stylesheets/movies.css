@@ -1,8 +1,8 @@
 body { background: #336699; color: #333; }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
+  font-family: tahoma, verdana, arial, helvetica, sans-serif;
+  font-size:   14px;
   line-height: 18px;
 }
 pre {
@@ -11,9 +11,9 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+a { color: #336699; }
+a:visited { color: #5588bb; }
+a:hover { color: #000 }
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -61,8 +61,11 @@ div.field, div.actions {
 
 #container {
 	width:960px;
-	border: 2px solid black;
+	border: 0px solid black;
 	background: white;
 	padding: 10px;
 	margin:0 auto;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
 }

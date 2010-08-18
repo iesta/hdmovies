@@ -1,6 +1,4 @@
-<h1>Movies</h1>
-
-<table>
+<table width="100%">
   <tr>
 	<th></th>
     <th>Title</th>
@@ -12,17 +10,18 @@
     <th>Director</th>
     <th>Size</th>
     <th>Format</th>
-    <th>User</th>
-    <th>Apple url</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @movies.each do |movie| %>
   <tr>
-	<td><%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %></td>
-    <td><%= movie.title %></td>
+	<td>
+	<% if movie.photo_file_name %>
+	<%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %> 
+	<% else %>
+	no pic
+	<% end %>
+	</td>
+    <td><strong><%= link_to movie.title, movie_path(movie) %></strong></td>
     <td><%= link_to movie.imdb_score, movie.url_imdb %></td>
     <td><%= movie.quality %></td>
     <td><%= movie.languages %></td>
@@ -31,15 +30,9 @@
     <td><%= movie.director %></td>
     <td><%= movie.size %></td>
     <td><%= movie.format %></td>
-    <td><%= movie.user_id %></td>
-    <td><%= movie.apple_url %></td>
-    <td><%= link_to 'Show', movie %></td>
+<!--     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+ -->  </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New movie', new_movie_path %>

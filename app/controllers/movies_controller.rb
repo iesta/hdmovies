@@ -10,6 +10,16 @@ class MoviesController < ApplicationController
       format.xml  { render :xml => @movies }
     end
   end
+  
+  def grid
+    @movies = Movie.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @movies }
+    end
+    
+  end
 
   # GET /movies/1
   # GET /movies/1.xml

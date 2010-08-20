@@ -3,6 +3,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :user_sessions
   resources :critics
   resources :movies
+  match 'movies_grid' => 'movies#grid'
   
   # config/routes.rb
   map.login "login", :controller => "user_sessions", :action => "new"

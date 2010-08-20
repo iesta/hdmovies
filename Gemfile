@@ -10,15 +10,12 @@ gem "rails", "3.0.0.rc"
 # ActiveRecord requires a database adapter. By default,
 # Rails has selected sqlite3.
 gem "sqlite3-ruby", :require => "sqlite3"
+
 #gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'will_paginate', ">=3.0.pre2"
 
-## Bundle the gems you use:
-# gem "bj"
-# gem "hpricot", "0.6"
-# gem "sqlite3-ruby", :require => "sqlite3"
-# gem "aws-s3", :require => "aws/s3"
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test

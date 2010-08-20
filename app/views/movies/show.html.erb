@@ -1,113 +1,125 @@
-<div align="right">
-<%= link_to 'Edit this movie', edit_movie_path(@movie) %>
+<div class="grid_10">
+	<h1><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
-<h1><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
+<div class="grid_2">
+		<%= link_to 'Edit this movie', edit_movie_path(@movie) %>
+</div>
+
+<div class="clear"></div> 
+
+<div class="grid_5"> 
+		<p> 
+			<%- unless !@movie.photo? -%>
+			    <%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %>
+			<%- end -%>
+
+			<p>
+			  <b>Quality:</b>
+			  <%= @movie.quality %>
+			</p>
+
+			<p>
+			  <b>Languages:</b>
+			  <%= @movie.languages %>
+			</p>
+
+			<p>
+			  <b>Subs:</b>
+			  <%= @movie.subs %>
+			</p>
+
+			<p>
+			  <b>Cast:</b>
+			  <%= @movie.cast %>
+			</p>
+
+			<p>
+			  <b>Director:</b>
+			  <%= @movie.director %>
+			</p>
+
+			<p>
+			  <b>Country:</b>
+			  <%= @movie.country %>
+			</p>
+
+			<p>
+			  <b>Size:</b>
+			  <%= @movie.size %> Gb
+			</p>
+
+			<p>
+			  <b>Format:</b>
+			  <%= @movie.format %>
+			</p>
+
+			<p>
+			  <b>User:</b>
+			  <%= @movie.user_id %>
+			</p>
+		</p> 
+	</div> 
+	<!-- end .grid_4 --> 
+<div class="grid_7"> 
+	<p> 
+		<p>
+		  <em><%= @movie.alt_title %></em>
+		</p>
 
 
-<%- unless !@movie.photo? -%>
-  <div>
-    <%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo', :align => 'right') %>
-  </div>
-<%- end -%>
+		<p>
+		  <b>imdb:</b>
+		  <strong><%= @movie.imdb_score %></strong>
+		  <%= link_to @movie.url_imdb %>
+		</p>
 
-<p>
-  <em><%= @movie.alt_title %></em>
-</p>
+		<p>
+		  <b>Origin:</b>
+		  <%= @movie.origin %>
+		</p>
 
-<p>
-  <b>imdb:</b>
-  <strong><%= @movie.imdb_score %></strong>
-  <%= link_to @movie.url_imdb %>
-</p>
+		<p>
+		  <b>Filename:</b>
+		  <%= @movie.filename %>
+		</p>
 
-<p>
-  <b>Origin:</b>
-  <%= @movie.origin %>
-</p>
+		<p>
+		  <b>Body:</b>
+		  <%= @movie.body %>
+		</p>
 
-<p>
-  <b>Filename:</b>
-  <%= @movie.filename %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @movie.body %>
-</p>
-
-<p>
-  <b>Plot:</b>
-  <%= @movie.plot %>
-</p>
+		<p>
+		  <b>Plot:</b>
+		  <%= @movie.plot %>
+		</p>
 
 
-<p>
-  <b>Url allocine:</b>
-  <%= @movie.url_allocine %>
-</p>
 
+		<p>
+		  <b>Youtube url:</b>
+		  <%= @movie.youtube_url %>
+		</p>
 
-<p>
-  <b>Quality:</b>
-  <%= @movie.quality %>
-</p>
+		<p>
+		  <b>Embed movie:</b>
+		  <%= @movie.embed_movie %>
+		</p>
 
-<p>
-  <b>Languages:</b>
-  <%= @movie.languages %>
-</p>
+		<p>
+		  <b>Apple url:</b>
+		  <%= @movie.apple_url %>
+		</p>
 
-<p>
-  <b>Subs:</b>
-  <%= @movie.subs %>
-</p>
+		<p>
+		  <b>Amazon url:</b>
+		  <%= @movie.amazon_url %>
+		</p>
 
-<p>
-  <b>Cast:</b>
-  <%= @movie.cast %>
-</p>
+		<p>
+		  <b>Url allocine:</b>
+		  <%= @movie.url_allocine %>
+		</p>
+	</p> 
+</div>
 
-<p>
-  <b>Director:</b>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @movie.country %>
-</p>
-
-<p>
-  <b>Size:</b>
-  <%= @movie.size %> Gb
-</p>
-
-<p>
-  <b>Format:</b>
-  <%= @movie.format %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @movie.user_id %>
-</p>
-
-<p>
-  <b>Youtube url:</b>
-  <%= @movie.youtube_url %>
-</p>
-
-<p>
-  <b>Embed movie:</b>
-  <%= @movie.embed_movie %>
-</p>
-
-<p>
-  <b>Apple url:</b>
-  <%= @movie.apple_url %>
-</p>
-
-<p>
-  <b>Amazon url:</b>
-  <%= @movie.amazon_url %>
-</p>
+<div class="clear"></div> 

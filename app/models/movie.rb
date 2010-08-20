@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
   has_many :critics  
   has_attached_file :photo, 
-                    :styles => { :xsmall => "60x60>", :small => "150x150>", :medium => "300x300>", :large => "600x600>" },
+                    :styles => { :xsmall => "60x60>", :small => "150x150>", :medium => "300x300>", :large => "500x500>" },
                     :url  => "/assets/movies/:style/:id_:basename.:extension",
                     :path => ":rails_root/public/assets/movies/:style/:id_:basename.:extension"
   

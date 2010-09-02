@@ -6,24 +6,25 @@
     <th>Movie</th>
     <th>Content</th>
     <th>Score</th>
+
+<!--     <th></th>
     <th></th>
     <th></th>
-    <th></th>
-  </tr>
+ -->  </tr>
 
 <% @critics.each do |critic| %>
   <tr>
-    <td><%= critic.user_id %></td>
-    <td><%= critic.movie_id %></td>
+    <td><%= critic.user.username %></td>
+    <td><%= critic.movie.title %></td>
     <td><%= critic.content %></td>
     <td><%= critic.score %></td>
-    <td><%= link_to 'Show', critic %></td>
+    <!-- <td><%= link_to 'Show', critic %></td>
     <td><%= link_to 'Edit', edit_critic_path(critic) %></td>
-    <td><%= link_to 'Destroy', critic, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', critic, :confirm => 'Are you sure?', :method => :delete %></td> -->
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New critic', new_critic_path %>
+<!-- <%= link_to 'New critic', new_critic_path %> -->

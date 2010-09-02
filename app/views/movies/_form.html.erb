@@ -47,7 +47,7 @@
 
   <div class="field">
     <%= f.label :origin %><br />
-    <%= f.select :origin, ['hdfrench','tehconnection','bt','other'] %>
+    <%= f.select :origin, ['','hdfrench','tehconnection','bt','other'] %>
   </div>
   <div class="field">
     <%= f.label :filename %><br />
@@ -68,7 +68,7 @@
   </div>
   <div class="field">
     <%= f.label :quality %><br />
-    <%= f.select :quality, ['720p','1080p','dvd','other'] %>
+    <%= f.select :quality, ['','720p','1080p','dvd','other'] %>
   </div>
   <div class="field">
     <%= f.label :languages %><br />
@@ -92,11 +92,11 @@
   </div>
   <div class="field">
     <%= f.label :format %><br />
-    <%= f.select :format, ['mkv','avi','mov','other'] %>
+    <%= f.select :format, ['','mkv','avi','mov','mp4','other'] %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.collection_select(:user_id, User.all, :id, :username) %>
   </div>
   <div class="field">
     <%= f.label :youtube_url %><br />

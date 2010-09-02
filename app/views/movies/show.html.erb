@@ -69,8 +69,11 @@
 
 		<p>
 		  <b>imdb:</b>
-		  <strong><%= @movie.imdb_score %></strong>
-		  <%= link_to @movie.url_imdb %>
+		 <% if @movie.url_imdb %>
+		<%= link_to @movie.imdb_score, @movie.url_imdb %>
+		<% else %>
+		<%= @movie.imdb_score -%>
+		<% end %>
 		</p>
 
 		<p>
@@ -121,5 +124,13 @@
 		</p>
 	</p> 
 </div>
+
+<H3>Critics (<%= @movie.critics.size -%>)</h3>
+	<% for c in @movie.critics %>
+	by <%= c.user.username -%><br>
+	<%= c.content -%>
+	<hr />
+	<% end %>
+
 
 <div class="clear"></div> 

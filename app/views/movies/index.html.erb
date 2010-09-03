@@ -3,6 +3,7 @@
 	<th></th>
     <th>Title</th>
     <th>Imdb</th>
+    <th>Aver.</th>
     <th>Quality</th>
     <th>Languages</th>
     <th>Subs</th>
@@ -28,8 +29,9 @@
 	<%= link_to movie.imdb_score, movie.url_imdb %>
 	<% else %>
 	<%= movie.imdb_score -%>
-	<% end %></strong>
+	<% end %></strong> 
 	</td>
+	<td><%= number_with_precision(movie.average, :precision => 2) -%></td>
     <td><%= movie.quality %></td>
     <td><%= movie.languages %></td>
     <td><%= movie.subs %></td>

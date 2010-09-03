@@ -9,11 +9,7 @@ class Movie < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   
-  # import from csv google doc
-  def self.import_from_csv
-    
-  end
-  
+
   def delete_photo=(value)
     @delete_photo = !value.to_i.zero?
   end
@@ -31,13 +27,18 @@ class Movie < ActiveRecord::Base
     self.photo = nil if delete_photo? && !photo.dirty?
   end
   
-  def self.import_from_csv
-    
-    def cs(s)
-      s.gsub(/\\/,'').gsub(/\""/,'')
-    rescue
-      return ''
+  # average of the critics || nil
+  def average
+    if self.critics.size>0
+      begin
+        self.critics.map{|i| i.score.to_f}.inject{ |sum, el| sum + el }.to_f / self.critics.size.to_f
+      rescue
+        nil
+      end
     end
+  end
+  
+  def self.import_from_csv
     
     filename = "#{RAILS_ROOT}/gmovies.tsv"
      file = File.new(filename, 'r')

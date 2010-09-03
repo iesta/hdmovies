@@ -8,11 +8,7 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-
+<% if current_user.superuser %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %> 
 <%= link_to 'Back', users_path %>

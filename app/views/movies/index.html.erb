@@ -40,7 +40,7 @@
     <td><%= movie.size %></td>
     <td><%= movie.format %></td>
     <td><%= movie.critics.size %></td>
-    <td><%= movie.user.username if movie.user %></td>
+    <td><%= link_to(movie.user.username,movie.user) if movie.user %></td>
 <!--     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>

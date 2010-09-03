@@ -10,7 +10,7 @@
 <div class="grid_5"> 
 	<p> 
 		<%- unless !@movie.photo? -%>
-		<%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %>
+		<%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %><br>
 		<%- end -%>
 
 		<b>Quality:</b>
@@ -130,7 +130,7 @@
 		<% end %>
 
 		<% for c in @movie.critics %>
-		by <strong><%= link_to c.user.username, c.user -%></strong> <% if c.score %><strong>(<%= c.score -%>/10)</strong><% end %><br>
+		by <strong><%= link_to c.user.username, c.user -%></strong> <% if c.score %><strong>(<%= c.score -%>/20)</strong><% end %><br>
 		<%= c.content -%>
 		<hr />
 		<% end %>

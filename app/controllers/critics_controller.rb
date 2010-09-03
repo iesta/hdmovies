@@ -3,7 +3,7 @@ class CriticsController < ApplicationController
   # GET /critics
   # GET /critics.xml
   def index
-    @critics = Critic.all
+    @critics = Critic.order('created_at DESC').paginate :per_page => 40, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,10 +42,11 @@ class CriticsController < ApplicationController
   # POST /critics.xml
   def create
     @critic = Critic.new(params[:critic])
+    current_user.critics << @critic
 
     respond_to do |format|
       if @critic.save
-        format.html { redirect_to(@critic, :notice => 'Critic was successfully created.') }
+        format.html { redirect_to(@critic.movie, :notice => 'Critic was successfully created.') }
         format.xml  { render :xml => @critic, :status => :created, :location => @critic }
       else
         format.html { render :action => "new" }

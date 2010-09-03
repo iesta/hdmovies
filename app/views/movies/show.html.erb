@@ -13,50 +13,37 @@
 			    <%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %>
 			<%- end -%>
 
-			<p>
 			  <b>Quality:</b>
 			  <%= @movie.quality %>
-			</p>
+<br>
 
-			<p>
 			  <b>Languages:</b>
 			  <%= @movie.languages %>
-			</p>
+<br>
 
-			<p>
 			  <b>Subs:</b>
 			  <%= @movie.subs %>
-			</p>
+<br>
 
-			<p>
-			  <b>Cast:</b>
-			  <%= @movie.cast %>
-			</p>
 
-			<p>
-			  <b>Director:</b>
-			  <%= @movie.director %>
-			</p>
 
-			<p>
-			  <b>Country:</b>
-			  <%= @movie.country %>
-			</p>
 
-			<p>
 			  <b>Size:</b>
 			  <%= @movie.size %> Gb
-			</p>
+<br>
 
-			<p>
 			  <b>Format:</b>
 			  <%= @movie.format %>
-			</p>
+<br>
 
-			<p>
+  <b>Filename:</b>
+  <%= @movie.filename %>
+
+<br>
 			  <b>User:</b>
-			  <%= @movie.user_id %>
-			</p>
+			  <%= link_to @movie.user.username, @movie.user %>
+			
+			
 		</p> 
 	</div> 
 	<!-- end .grid_4 --> 
@@ -77,14 +64,27 @@
 		</p>
 
 		<p>
+		  <b>Director:</b>
+		  <%= @movie.director %>
+		</p>
+
+
+		<p>
+		  <b>Cast:</b>
+		  <%= @movie.cast %>
+		</p>
+
+		<p>
+		  <b>Country:</b>
+		  <%= @movie.country %>
+		</p>
+
+		<p>
 		  <b>Origin:</b>
 		  <%= @movie.origin %>
 		</p>
 
-		<p>
-		  <b>Filename:</b>
-		  <%= @movie.filename %>
-		</p>
+
 
 		<p>
 		  <b>Body:</b>
@@ -125,9 +125,21 @@
 	</p> 
 </div>
 
+<p>
+	<a target="_blank" href="http://www.google.com/images?q=<%= @movie.title.gsub('\s','+') -%>+%3F&um=1&hl=fr&tbs=isch:1,isz:m">Search Google Image</a><br>
+	<a target="_blank" href="http://www.imdb.com/find?s=all&q=<%= @movie.title.gsub('\s','+') -%>">Search Imdb</a><br>
+	<a target="_blank" href="http://www.youtube.com/results?search_query=<%= @movie.title.gsub('\s','+') -%>">Search Youtube</a>
+</p>
+
 <H3>Critics (<%= @movie.critics.size -%>)</h3>
+	
+	<% if current_user && !current_user.critic_on(@movie) %>
+	<% @critic = Critic.new(:movie_id => @movie.id) %>
+	<%= render :partial => '/critics/form' -%>
+	<% end %>
+	
 	<% for c in @movie.critics %>
-	by <%= c.user.username -%><br>
+	by <%= link_to c.user.username, c.user -%><br>
 	<%= c.content -%>
 	<hr />
 	<% end %>

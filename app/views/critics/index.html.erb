@@ -2,10 +2,10 @@
 
 <table>
   <tr>
-    <th>User</th>
     <th>Movie</th>
     <th>Content</th>
     <th>Score</th>
+    <th>User</th>
 
 <!--     <th></th>
     <th></th>
@@ -14,10 +14,10 @@
 
 <% @critics.each do |critic| %>
   <tr>
-    <td><%= critic.user.username %></td>
-    <td><%= critic.movie.title %></td>
+    <td><%= link_to critic.movie.title, critic.movie %></td>
     <td><%= critic.content %></td>
     <td><%= critic.score %></td>
+    <td><%= link_to critic.user.username, critic.user %></td>
     <!-- <td><%= link_to 'Show', critic %></td>
     <td><%= link_to 'Edit', edit_critic_path(critic) %></td>
     <td><%= link_to 'Destroy', critic, :confirm => 'Are you sure?', :method => :delete %></td> -->
@@ -26,5 +26,7 @@
 </table>
 
 <br />
+
+<%= will_paginate @critics %> 
 
 <!-- <%= link_to 'New critic', new_critic_path %> -->

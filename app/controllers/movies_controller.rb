@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.order('created_at DESC')
+    @movies = Movie.order('created_at DESC').paginate :per_page => 40, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

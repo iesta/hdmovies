@@ -1,4 +1,4 @@
-<table width="100%" border="1">
+<table width="100%" border="1" cellspacing="0">
   <tr>
 	<th></th>
     <th>Title</th>
@@ -8,8 +8,6 @@
     <th>Subs</th>
     <th>Cast</th>
     <th>Director</th>
-    <th>Size</th>
-    <th>Format</th>
     <th>Critics</th>
     <th>By</th>
   </tr>
@@ -37,8 +35,6 @@
     <td><%= movie.subs %></td>
     <td><%= movie.cast %></td>
     <td><%= movie.director %></td>
-    <td><%= movie.size %></td>
-    <td><%= movie.format %></td>
     <td><%= movie.critics.size %></td>
     <td><%= link_to(movie.user.username,movie.user) if movie.user %></td>
 <!--     <td><%= link_to 'Show', movie %></td>
@@ -47,3 +43,5 @@
  -->  </tr>
 <% end %>
 </table>
+
+<%= will_paginate @movies %> 

@@ -130,7 +130,7 @@
 		<% end %>
 
 		<% for c in @movie.critics %>
-		by <%= link_to c.user.username, c.user -%><br>
+		by <strong><%= link_to c.user.username, c.user -%></strong> <% if c.score %><strong>(<%= c.score -%>/10)</strong><% end %><br>
 		<%= c.content -%>
 		<hr />
 		<% end %>

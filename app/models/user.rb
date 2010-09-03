@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
   has_many :critics
   
   def critic_on(movie)
-    return Critic.find(:first, :conditions => ["movie_id = ?",movie.id])
+    return Critic.find(:first, :conditions => ["movie_id = ? AND user_id = ?",movie.id,self.id])
   end
 end

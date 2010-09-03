@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
   end
   
   def grid
-    @movies = Movie.all
+    @movies = Movie..order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

@@ -3,7 +3,14 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.order('created_at DESC').paginate :per_page => 25, :page => params[:page]
+    if params[:s]
+      @movies = Movie.where("title LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page]
+      @movies = Movie.where("alt_title LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
+      @movies = Movie.where("\"cast\" LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
+      @movies = Movie.where("\"director\" LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
+    else
+      @movies = Movie.order('created_at DESC').paginate :per_page => 20, :page => params[:page]
+    end
 
     respond_to do |format|
       format.html # index.html.erb

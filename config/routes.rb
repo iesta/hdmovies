@@ -4,6 +4,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :critics
   resources :movies
   match 'movies_grid' => 'movies#grid'
+  match 'stats' => 'movies#stats'
   
   # config/routes.rb
   map.login "login", :controller => "user_sessions", :action => "new"

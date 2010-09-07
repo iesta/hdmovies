@@ -25,7 +25,11 @@ class MoviesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @movies }
     end
-    
+  end
+
+  def stats
+    @movies_size = Movie.count
+    @critics_size = Critic.count
   end
 
   # GET /movies/1

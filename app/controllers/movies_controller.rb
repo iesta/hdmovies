@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
   end
   
   def grid
-    @movies = Movie.order('created_at DESC')
+    @movies = Movie.where("photo_file_name IS NOT NULL").order('created_at DESC').paginate :per_page => 20, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +29,9 @@ class MoviesController < ApplicationController
 
   def stats
     @movies_size = Movie.count
+    @movies_w_pics_size = Movie.count(:conditions => "photo_file_name IS NOT NULL")
     @critics_size = Critic.count
+    @users_size = User.count
   end
 
   # GET /movies/1

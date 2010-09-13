@@ -2,13 +2,18 @@
   <%= f.error_messages %>
 
 <div style="float:right">
+
+	<div class="actions">
+	  <%= f.submit %>
+	</div>
+
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body, :rows => 7 %>
+    <%= f.text_area :body, :rows => 5 %>
   </div>
   <div class="field">
     <%= f.label :plot %><br />
-    <%= f.text_area :plot, :rows => 7 %>
+    <%= f.text_area :plot, :rows => 5 %>
   </div>
 
   <div class="field">
@@ -34,15 +39,15 @@
 </div>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title , :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :alt_title %><br />
-    <%= f.text_field :alt_title %>
+    <%= f.text_field :alt_title , :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :year %><br />
-    <%= f.text_field :year %>
+    <%= f.select :year, (1910..2015), :include_blank => TRUE %>
   </div>
 
   <div class="field">
@@ -51,16 +56,12 @@
   </div>
   <div class="field">
     <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
+    <%= f.text_field :filename , :size => 50 %>
   </div>
 
   <div class="field">
     <%= f.label :url_imdb %><br />
-    <%= f.text_field :url_imdb %>
-  </div>
-  <div class="field">
-    <%= f.label :url_allocine %><br />
-    <%= f.text_field :url_allocine %>
+    <%= f.text_field :url_imdb , :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :imdb_score %><br />
@@ -70,6 +71,11 @@
     <%= f.label :quality %><br />
     <%= f.select :quality, ['','720p','1080p','dvd','other'] %>
   </div>
+  <div class="field">
+    <%= f.label :format %><br />
+    <%= f.select :format, ['','mkv','avi','mov','mp4','other'] %>
+  </div>
+
   <div class="field">
     <%= f.label :languages %><br />
     <%= f.text_field :languages %>
@@ -91,10 +97,6 @@
     <%= f.text_field :size %>
   </div>
   <div class="field">
-    <%= f.label :format %><br />
-    <%= f.select :format, ['','mkv','avi','mov','mp4','other'] %>
-  </div>
-  <div class="field">
     <%= f.label :user_id %><br />
     <%= f.collection_select(:user_id, User.all, :id, :username) %>
   </div>
@@ -114,6 +116,11 @@
     <%= f.label :amazon_url %><br />
     <%= f.text_field :amazon_url %>
   </div>
+  <div class="field">
+    <%= f.label :url_allocine %><br />
+    <%= f.text_field :url_allocine %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

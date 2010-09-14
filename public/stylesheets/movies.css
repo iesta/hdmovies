@@ -69,3 +69,34 @@ div.field, div.actions {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 }
+/* paginator */
+.pagination {
+  padding: 10px 3px 10px 3px;
+  margin: 3px;
+  margin-bottom: 10px;
+}
+.pagination a {
+  padding: 5px 7px 5px 7px;
+  margin: 0px;
+  border: 1px solid #aaa;
+  text-decoration: none;
+  color: #aaa;
+}
+.pagination a:hover, .pagination a:active {
+  border: 1px solid #336699;
+  color: #3B3B3B;
+}
+.pagination span.current, .pagination a.current {
+  padding: 5px 9px 5px 9px;
+  margin: 1px;
+  border: 1px solid #000;
+  font-weight: bold;
+  background-color: #336699;
+  color: #FFF;
+}
+.pagination span.disabled {
+  padding: 5px 9px 5px 9px;
+  margin: 1px;
+  border: 1px solid #eee;
+  color: #ddd;
+}

@@ -19,10 +19,10 @@
 	<% if movie.photo_file_name %>
 	<%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %> 
 	<% else %>
-	
+	add
 	<% end %>
 	</td>
-    <td><strong><%= link_to movie.title, movie_path(movie) %></strong></td>
+    <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></td>
     <td>
 	<strong>
 	<% if movie.url_imdb && movie.imdb_score %>

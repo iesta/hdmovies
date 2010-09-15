@@ -1,5 +1,5 @@
 <div class="grid_10">
-	<h1><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
+	<h1><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
 <div class="grid_2">
 	<%= link_to 'Edit this movie', edit_movie_path(@movie) %>
@@ -34,7 +34,7 @@
 		<br>
 
 		<b>Filename:</b>
-		<%= @movie.filename %>
+		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %>
 
 		<br>
 		<b>User:</b>
@@ -49,6 +49,9 @@
 			<em><%= @movie.alt_title %></em>
 		</p>
 
+		<p>
+			<strong>Episodes</strong> : <%= @movie.episodes -%>
+		</p>
 
 		<p>
 			<b>imdb:</b>
@@ -118,6 +121,7 @@
 
 	<p>
 		<a target="_blank" href="http://www.google.com/images?q=<%= @movie.title.gsub('\s','+') -%>+%3F&um=1&hl=fr&tbs=isch:1,isz:m">Search Google Image</a><br>
+		<a target="_blank" href="http://www.bing.com/images/search?q=<%= @movie.title.gsub('\s','+') -%>&go=&form=QBLH&scope=images&filt=all">Search Bing Image</a><br>
 		<a target="_blank" href="http://www.imdb.com/find?s=all&q=<%= @movie.title.gsub('\s','+') -%>">Search Imdb</a><br>
 		<a target="_blank" href="http://www.youtube.com/results?search_query=<%= @movie.title.gsub('\s','+') -%>">Search Youtube</a>
 	</p>

@@ -7,6 +7,17 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  before_filter :set_process_name_from_request
+  def set_process_name_from_request
+    $0 = "hdm*: " + request.path[0,20]
+  end   
+
+  after_filter :unset_process_name_from_request
+  def unset_process_name_from_request
+    $0 = "hdm_: " + request.path[0,20]
+  end
+  
+
   private
 
   def current_user_session

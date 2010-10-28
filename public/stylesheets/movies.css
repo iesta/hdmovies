@@ -100,3 +100,11 @@ div.field, div.actions {
   border: 1px solid #eee;
   color: #ddd;
 }
+.big_score {
+	font-size: 18px;	
+	border-radius: 5px;
+	color: white;
+	background-color: #336699;
+	padding: 2px;
+	width: 22px;
+}

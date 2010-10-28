@@ -31,10 +31,6 @@
 
 <table>
   <tr>
-    <th>Movie</th>
-    <th>Content</th>
-    <th>Score</th>
-    <th>User</th>
 <% for critic in current_user.critics %>
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
 <% end %>

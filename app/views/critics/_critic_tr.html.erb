@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to critic.movie.title, critic.movie %></td>
+  <td align="center"><% if critic.score %><div class="big_score"><%= critic.score %></div><% end %></td>
   <td><%= critic.content %></td>
-  <td><%= critic.score %></td>
   <td><%= link_to critic.user.username, critic.user %></td>
 <td>
 	<% if critic.user==current_user %><%= link_to "edit this critic", edit_critic_path(critic, :return_to => 'critics') -%><% end %>

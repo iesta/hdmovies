@@ -9,7 +9,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= link_to user.username, user %></td>
+    <td><%= link_to user.username, user %> <% if user.superuser %><% end %></td>
     <td><%= user.email %></td>
 	<td><%= user.critics.size -%></td>
   </tr>

@@ -11,7 +11,18 @@ class MoviesController < ApplicationController
     elsif params[:m]
       @movies = Movie.where("tvserie != ''").order('created_at DESC').paginate :per_page => 20, :page => params[:page]
     else
-      @movies = Movie.order('created_at DESC').paginate :per_page => 20, :page => params[:page]
+      if params[:order]
+        case params[:order]
+        when 'score'
+          order = "imdb_score DESC"
+        when 'title'
+          order = "title ASC"
+        end
+        
+      else
+        order = "created_at DESC"
+      end
+      @movies = Movie.order(order).paginate :per_page => 20, :page => params[:page]
     end
 
     respond_to do |format|

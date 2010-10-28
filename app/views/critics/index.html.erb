@@ -1,11 +1,12 @@
 <h1>Listing critics</h1>
 
-<table>
+<table width="100%">
   <tr>
     <th>Movie</th>
     <th>Content</th>
     <th>Score</th>
     <th>User</th>
+<th></th>
 
 <!--     <th></th>
     <th></th>
@@ -13,15 +14,7 @@
  -->  </tr>
 
 <% @critics.each do |critic| %>
-  <tr>
-    <td><%= link_to critic.movie.title, critic.movie %></td>
-    <td><%= critic.content %></td>
-    <td><%= critic.score %></td>
-    <td><%= link_to critic.user.username, critic.user %></td>
-    <!-- <td><%= link_to 'Show', critic %></td>
-    <td><%= link_to 'Edit', edit_critic_path(critic) %></td>
-    <td><%= link_to 'Destroy', critic, :confirm => 'Are you sure?', :method => :delete %></td> -->
-  </tr>
+<%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
 <% end %>
 </table>
 

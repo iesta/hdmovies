@@ -62,7 +62,13 @@ class CriticsController < ApplicationController
 
     respond_to do |format|
       if @critic.update_attributes(params[:critic])
-        format.html { redirect_to(@critic, :notice => 'Critic was successfully updated.') }
+        format.html { 
+          if params[:return_to]=='critics'
+            redirect_to(critics_path, :notice => 'Critic was successfully updated.') 
+          else
+            redirect_to(@critic.movie, :notice => 'Critic was successfully updated.') 
+          end
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

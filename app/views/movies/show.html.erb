@@ -144,7 +144,9 @@
 		<% end %>
 
 		<% for c in @movie.critics %>
-		by <strong><%= link_to c.user.username, c.user -%></strong> <% if c.score %><strong>(<%= c.score -%>/20)</strong><% end %><br>
+		by <strong><%= link_to c.user.username, c.user -%></strong> <% if c.score %><strong>(<%= c.score -%>/20)</strong><% end %>
+		<% if c.user==current_user %><%= link_to "edit this critic", edit_critic_path(c) -%><% end %>
+		<br>
 		<%= c.content -%>
 		<hr />
 		<% end %>

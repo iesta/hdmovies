@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/mbleigh/acts-as-taggable-on.git
+  revision: 3d707c2
+  specs:
+    acts-as-taggable-on (2.0.6)
+
+GIT
   remote: git://github.com/odorcicd/authlogic.git
   revision: a087ad0
   branch: rails3
@@ -86,6 +92,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   authlogic!
   paperclip!
   rails (= 3.0.0)

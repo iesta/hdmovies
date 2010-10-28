@@ -2,6 +2,7 @@ class Movie < ActiveRecord::Base
   belongs_to :user
   has_many :critics, :dependent => :destroy, :order => "created_at DESC"
   has_and_belongs_to_many :users, :join_table => "users_movies"
+  acts_as_taggable_on :genre
   has_attached_file :photo, 
                     :styles => { :xsmall => "60x60>", :small => "150x150>", :medium => "300x300>", :large => "500x500>" },
                     :url  => "/assets/movies/:style/:id_:basename.:extension",

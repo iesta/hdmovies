@@ -8,6 +8,11 @@
 	</div>
 
   <div class="field">
+    <%= f.label :genres %><br />
+    <%= f.text_area :genre_list, :rows => 2 %>
+  </div>
+
+  <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body, :rows => 5 %>
   </div>
@@ -39,6 +44,9 @@
     
     </div>
   <%- end -%>
+
+<br>
+<%= render :partial => "assets_links" -%>
 
 </div>
   <div class="field">

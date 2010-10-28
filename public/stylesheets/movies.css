@@ -107,4 +107,16 @@ div.field, div.actions {
 	background-color: #336699;
 	padding: 2px;
 	width: 22px;
+	text-decoration:none;
+}
+.big_score:hover,.big_score:visited {
+	color:white;
+}
+.very_big {
+	font-size: 30px;
+	line-height: 35px;
+	padding: 7px;
+}
+.small_genre {
+	font-size:10px;
 }

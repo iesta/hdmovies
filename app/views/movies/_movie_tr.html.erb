@@ -6,7 +6,9 @@
 	add
 	<% end %>
 	</td>
-    <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></td>
+    <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong>
+	<br><span class="small_genre"><%= movie.genre_list -%></span>
+	</td>
     <td>
 	<strong>
 	<% if movie.url_imdb && movie.imdb_score %>

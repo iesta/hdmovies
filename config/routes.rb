@@ -8,6 +8,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :user_sessions
   resources :critics
   resources :movies
+  resources :genres
   match 'movies_grid' => 'movies#grid'
   match 'stats' => 'movies#stats'
   

@@ -81,4 +81,27 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # POST /users/1/add_to_list (?movie=9)
+  def add_to_list
+    @user = User.find(params[:id])
+    @movie = Movie.find(params[:movie])
+    @user.movies << @movie
+    respond_to do |format|
+      format.html { redirect_to(@movie, :notice => 'Movie was added to your wishlist.') }
+      format.xml  { render :xml => @user }
+    end
+  end
+
+  # POST /users/1/add_to_list (?movie=9)
+  def remove_from_list
+    @user = User.find(params[:id])
+    @movie = Movie.find(params[:movie])
+    @user.movies.delete(@movie)
+    respond_to do |format|
+      format.html { redirect_to(@movie, :notice => 'Movie was removed from your wishlist.') }
+      format.xml  { render :xml => @user }
+    end
+  end
+
 end

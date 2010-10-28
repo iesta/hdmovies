@@ -1,5 +1,10 @@
 Hdmovies::Application.routes.draw do |map|
-  resources :users
+  resources :users do
+    member do
+      post 'add_to_list'
+      post 'remove_from_list'
+    end
+  end
   resources :user_sessions
   resources :critics
   resources :movies

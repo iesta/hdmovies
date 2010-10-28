@@ -14,35 +14,7 @@
   </tr>
 
 <% @movies.each do |movie| %>
-  <tr>
-	<td>
-	<% if movie.photo_file_name %>
-	<%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %> 
-	<% else %>
-	add
-	<% end %>
-	</td>
-    <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></td>
-    <td>
-	<strong>
-	<% if movie.url_imdb && movie.imdb_score %>
-	<%= link_to movie.imdb_score, movie.url_imdb %>
-	<% else %>
-	<%= movie.imdb_score -%>
-	<% end %></strong> 
-	</td>
-	<td><%= number_with_precision(movie.average, :precision => 1) -%></td>
-    <td><%= movie.quality %></td>
-    <td><%= movie.languages %></td>
-    <td><%= movie.subs %></td>
-    <td><%= movie.cast %></td>
-    <td><%= movie.director %></td>
-    <td><%= movie.critics.size %></td>
-    <td><%= link_to(movie.user.username,movie.user) if movie.user %></td>
-<!--     <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
- -->  </tr>
+<%= render :partial => 'movie_tr', :locals => {:movie => movie} -%>
 <% end %>
 </table>
 

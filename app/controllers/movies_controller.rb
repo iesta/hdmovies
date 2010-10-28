@@ -8,6 +8,8 @@ class MoviesController < ApplicationController
       @movies = Movie.where("alt_title LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
       @movies = Movie.where("\"cast\" LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
       @movies = Movie.where("\"director\" LIKE '\%#{params[:s]}\%'").order('created_at DESC').paginate :per_page => 20, :page => params[:page] unless @movies.size>0
+    elsif params[:m]
+      @movies = Movie.where("tvserie != ''").order('created_at DESC').paginate :per_page => 20, :page => params[:page]
     else
       @movies = Movie.order('created_at DESC').paginate :per_page => 20, :page => params[:page]
     end

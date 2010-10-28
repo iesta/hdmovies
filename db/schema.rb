@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100915132641) do
+ActiveRecord::Schema.define(:version => 20101028123830) do
 
   create_table "critics", :force => true do |t|
     t.integer  "user_id"
@@ -64,5 +64,12 @@ ActiveRecord::Schema.define(:version => 20100915132641) do
 
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'bool' for column 'supesuser'
+
+  create_table "users_movies", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

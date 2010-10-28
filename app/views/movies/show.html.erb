@@ -2,7 +2,14 @@
 	<h1><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
 <div class="grid_2">
-	<%= link_to 'Edit this movie', edit_movie_path(@movie) %>
+	<% if current_user.superuser %>
+	<%= link_to 'Edit this movie', edit_movie_path(@movie) %> <br>
+	<% end %>
+	<% if current_user.movies.include?(@movie) %>
+	<%= link_to 'Remove from wishlist', remove_from_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+	<% else %>
+	<%= link_to 'Add to my wishlist', add_to_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+	<% end %>
 </div>
 
 <div class="clear"></div> 
@@ -37,8 +44,11 @@
 		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %>
 
 		<br>
-		<b>User:</b>
+		<b>Added by:</b>
 		<%= link_to @movie.user.username, @movie.user %>
+		<br>
+		<br>
+		<strong>In the wishlist of</strong> : <% for u in  @movie.users %><%= link_to u.username, user_path(u) -%><% end %> 
 
 	</p> 
 </div> 

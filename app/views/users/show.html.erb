@@ -1,14 +1,52 @@
 <p>
   <b>Username:</b>
-  <%= @user.username %>
+  <%= @user.username %> (<%= @user.email %>)
 </p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+
+<h2>Wants to see</h2>
+
+<table width="100%" border="1" cellspacing="0">
+  <tr>
+	<th></th>
+    <th>Title</th>
+    <th>Imdb</th>
+    <th>Aver.</th>
+    <th>Quality</th>
+    <th>Languages</th>
+    <th>Subs</th>
+    <th>Cast</th>
+    <th>Director</th>
+    <th>Critics</th>
+    <th>By</th>
+  </tr>
+<% for movie in current_user.movies %>
+<%= render :partial => '/movies/movie_tr', :locals => {:movie => movie} -%>
+<% end %>
+</table>
+
+
+
+<h2>Critics</h2>
+
+<table>
+  <tr>
+    <th>Movie</th>
+    <th>Content</th>
+    <th>Score</th>
+    <th>User</th>
+<% for critic in current_user.critics %>
+<%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
+<% end %>
+</table>
+
+
+
 
 <% if current_user.superuser %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<br>
+<hr><br>
+<%= link_to 'Edit user', edit_user_path(@user) %> |
+<%= link_to 'All users', users_path %>
 <% end %> 
-<%= link_to 'Back', users_path %>
+

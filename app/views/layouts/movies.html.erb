@@ -21,7 +21,7 @@
 		</div>
 		<div class="grid_7">
 		<div id="menu" style="float:right">
-			<% if current_user.superuser %>
+			<% if current_user && current_user.superuser %>
 					<a href="/movies/new" id="new">Add movie</a> 
 					<a href="/users" id="new">Users</a> 
 			<% end %>

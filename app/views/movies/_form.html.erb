@@ -46,8 +46,9 @@
   <%- end -%>
 
 <br>
+<% unless params[:action]=='new' %>
 <%= render :partial => "assets_links" -%>
-
+<% end %>
 </div>
   <div class="field">
     <%= f.label :title %><br />

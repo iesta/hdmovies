@@ -20,7 +20,7 @@
     <th>Critics</th>
     <th>By</th>
   </tr>
-<% for movie in current_user.movies %>
+<% for movie in @user.movies %>
 <%= render :partial => '/movies/movie_tr', :locals => {:movie => movie} -%>
 <% end %>
 </table>
@@ -31,7 +31,7 @@
 
 <table>
   <tr>
-<% for critic in current_user.critics %>
+<% for critic in @user.critics.order('created_at DESC') %>
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
 <% end %>
 </table>

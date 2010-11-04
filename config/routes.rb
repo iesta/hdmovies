@@ -1,4 +1,6 @@
 Hdmovies::Application.routes.draw do |map|
+  resources :requests
+
   resources :users do
     member do
       post 'add_to_list'
@@ -10,6 +12,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :movies
   resources :genres
   match 'movies_grid' => 'movies#grid'
+  match 'movies_full' => 'movies#full'
   match 'stats' => 'movies#stats'
   
   # config/routes.rb

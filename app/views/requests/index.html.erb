@@ -1,0 +1,24 @@
+<h1>Requests</h1>
+<%= link_to 'Add a Request', new_request_path %> for movies you are looking for...
+<br><br>
+<table cellpadding="3">
+
+<% @requests.each do |request| %>
+  <tr>
+	<td style="font-size:22px"><a href="<%= request.url -%>"><%= request.name %></a></td>
+	<td>asked by <a href="/users/<%= request.user.id -%>"><%= request.user.username %></a></td>
+<!--      <td><%= link_to 'Show', request %></td>
+    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+ -->    
+<td>
+<% if current_user==request.user %>
+<%= link_to 'Delete request', request, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

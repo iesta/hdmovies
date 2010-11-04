@@ -1,0 +1,27 @@
+<table border="1" cellspacing="1" cellpadding="2">
+	<tr><th>Name</th>
+	<th>Imdb</th>
+	<th>Genres</th>
+	<th>Qual.</th>
+	<th>Lang</th>
+	<th>Subs</th>
+	</tr>
+	<% for movie in @movies %>
+	<tr>
+		<td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></td>
+		<td>
+			<strong>
+			<% if movie.url_imdb && movie.imdb_score %>
+			<%= link_to movie.imdb_score, movie.url_imdb %>
+			<% else %>
+			<%= movie.imdb_score -%>
+			<% end %></strong> 
+		</td>
+		<td><%= movie.genre_list -%></td>
+		<td><%= movie.quality %></td>
+	    <td><%= movie.languages %></td>
+	    <td><%= movie.subs %></td>
+	    
+	</tr>
+	<% end %>
+</table>

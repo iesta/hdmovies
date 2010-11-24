@@ -12,6 +12,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :movies
   resources :genres
   match 'movies_grid' => 'movies#grid'
+  match 'movies_sgrid' => 'movies#sgrid'
   match 'movies_full' => 'movies#full'
   match 'stats' => 'movies#stats'
   

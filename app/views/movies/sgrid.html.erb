@@ -1,0 +1,7 @@
+<% @movies.each do |movie| %>
+	<% if movie.photo_file_name %>
+	<a href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title) %> </a>
+	<% end %>
+<% end %>
+
+<%= will_paginate @movies %>

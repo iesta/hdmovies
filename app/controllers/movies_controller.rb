@@ -42,6 +42,14 @@ class MoviesController < ApplicationController
       format.xml  { render :xml => @movies }
     end
   end
+  
+  def sgrid
+    @movies = Movie.where("photo_file_name IS NOT NULL").order('created_at DESC').paginate :per_page => 16, :page => params[:page]
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @movies }
+    end    
+  end
 
   def full
     @movies = Movie.order('title ASC')

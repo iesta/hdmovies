@@ -14,7 +14,7 @@
 
 <div class="clear"></div> 
 
-<div class="grid_5"> 
+<div class="grid_6"> 
 	<p> 
 		<%- unless !@movie.photo? -%>
 		<%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %><br>
@@ -54,7 +54,7 @@
 	</p> 
 </div> 
 <!-- end .grid_4 --> 
-<div class="grid_7"> 
+<div class="grid_6"> 
 	<p> 
 		<p>
 			<em><%= @movie.alt_title %></em>

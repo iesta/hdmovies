@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # application_controller.rb
   filter_parameter_logging :password, :password_confirmation
 
-  helper_method :current_user
+  helper_method :current_user, :current_user_session
 
   before_filter :set_process_name_from_request
   def set_process_name_from_request

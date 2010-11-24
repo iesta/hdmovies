@@ -1,5 +1,16 @@
 <% form_for(@movie, :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
+<% if @movie.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+    <ul>
+    <% @movie.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
 <div style="float:right">
 
@@ -74,11 +85,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename , :size => 40 %> <%= f.check_box(:deleted) %> <%= f.label :deleted %>
-  </div>
-
-  <div class="field">
     <%= f.label :url_imdb %><br />
     <%= f.text_field :url_imdb , :size => 50 %>
   </div>
@@ -108,6 +114,12 @@
     <%= f.label :country %><br />
     <%= f.text_field :country %>
   </div>
+
+  <div class="field">
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename , :size => 40 %> <%= f.check_box(:deleted) %> <%= f.label :deleted %>
+  </div>
+
   <div class="field">
     <%= f.label :size %><br />
     <%= f.text_field :size %> Gb

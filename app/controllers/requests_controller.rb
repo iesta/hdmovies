@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.xml
   def index
-    @requests = Request.all
+    @requests = Request.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

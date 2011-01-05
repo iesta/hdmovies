@@ -39,7 +39,7 @@
 		<b>Format:</b>
 		<%= @movie.format %>
 		<br>
-		<b>Origin</b><%= @movie.origin %>
+		<b>Origin</b> <%= @movie.origin %>
 <br>
 		<b>Filename:</b>
 		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %>
@@ -49,7 +49,7 @@
 		<%= link_to @movie.user.username, @movie.user %>
 		<br>
 		<br>
-		<strong>In the wishlist of</strong> : <% for u in  @movie.users %><%= link_to u.username, user_path(u) -%><% end %> 
+		<strong>In the wishlist of</strong> : <% for u in  @movie.users %><%= link_to u.username, user_path(u) -%> <% end %> 
 
 	</p> 
 </div> 
@@ -150,6 +150,10 @@
 		<%= c.content -%>
 		<hr />
 		<% end %>
+
+	<h3>Facebook comments</h3>
+	<div id="fb-root"></div><script src="http://connect.facebook.net/fr_FR/all.js#appId=189039117779667&amp;xfbml=1"></script><fb:comments xid="hdiesta_movie_<%= @movie.id -%>" numposts="8" width="460" publish_feed="false"></fb:comments>
+	
 
 
 </div>

@@ -1,5 +1,8 @@
 class RequestsController < ApplicationController
   before_filter :require_user
+
+  protect_from_forgery :except => [:fill]
+
   # GET /requests
   # GET /requests.xml
   def index
@@ -68,6 +71,21 @@ class RequestsController < ApplicationController
         format.xml  { render :xml => @request.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def fill
+    @request = Request.find(params[:id])
+    movie = Movie.find(params[:fill_id])
+    notice = "Data missing"
+    if movie
+      @request.filled_id = m.id
+      @request.save
+      notice = "Request filled"
+    end
+    redirect_to(requests_url, :notice => notice)
+    
+    rescue    
+    redirect_to(requests_url, :notice => notice)
   end
 
   # DELETE /requests/1

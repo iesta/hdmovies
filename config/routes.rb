@@ -1,5 +1,9 @@
 Hdmovies::Application.routes.draw do |map|
-  resources :requests
+  resources :requests do
+    member do
+      post 'fill'
+    end
+  end
 
   resources :users do
     member do

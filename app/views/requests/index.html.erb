@@ -1,7 +1,7 @@
 <h1>Requests</h1>
 <%= link_to 'Add a Request', new_request_path %> for movies you are looking for...
 <br><br>
-<table cellpadding="3">
+<table cellpadding="3" border="1" width="100%">
 
 <% @requests.each do |request| %>
   <tr>
@@ -9,16 +9,25 @@
 	<td>asked by <a href="/users/<%= request.user.id -%>"><%= request.user.username %></a></td>
 <!--      <td><%= link_to 'Show', request %></td>
     <td><%= link_to 'Edit', edit_request_path(request) %></td>
- -->    
+ -->
 <td>
-<% if current_user==request.user %>
-<%= link_to 'Delete request', request, :confirm => 'Are you sure?', :method => :delete %>
+<% if request.filled_id %> 
+<span style="color:green"><a href="/movies/<%= request.filled_id -%>">Filled </a></span>
 <% end %>
 </td>
-  </tr>
+
+<td>
+<% if current_user==request.user %>
+<% unless request.filled_id %>
+<form action="/requests/<%= request.id -%>/fill" method="post"><input type="text" name="fill_id" size="5" /> 
+<input type="submit" value="fill" />
+<% end %>
+</td><td>
+<%= link_to 'delete', request, :confirm => 'Are you sure?', :method => :delete %></form>
+<% end %>
+</td>
+</tr>
 <% end %>
 </table>
 
 <br />
-
-

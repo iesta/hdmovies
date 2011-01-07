@@ -18,14 +18,19 @@
 
 <td>
 <% if current_user==request.user %>
+<%= link_to 'delete', request, :confirm => 'Are you sure?', :method => :delete %></form>
+<% end %>
+</td>
+
+<td>
+<% if current_user.superuser %>
 <% unless request.filled_id %>
 <form action="/requests/<%= request.id -%>/fill" method="post"><input type="text" name="fill_id" size="5" /> 
 <input type="submit" value="fill" />
 <% end %>
-</td><td>
-<%= link_to 'delete', request, :confirm => 'Are you sure?', :method => :delete %></form>
 <% end %>
 </td>
+
 </tr>
 <% end %>
 </table>

@@ -75,17 +75,18 @@ class RequestsController < ApplicationController
   
   def fill
     @request = Request.find(params[:id])
-    movie = Movie.find(params[:fill_id])
+    movie = Movie.find(params[:fill_id].to_i)
     notice = "Data missing"
+
     if movie
-      @request.filled_id = m.id
+      @request.filled_id = movie.id
       @request.save
       notice = "Request filled"
     end
     redirect_to(requests_url, :notice => notice)
     
-    rescue    
-    redirect_to(requests_url, :notice => notice)
+    rescue
+      redirect_to(requests_url, :notice => notice)
   end
 
   # DELETE /requests/1

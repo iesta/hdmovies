@@ -27,6 +27,7 @@
 <% unless request.filled_id %>
 <form action="/requests/<%= request.id -%>/fill" method="post"><input type="text" name="fill_id" size="5" /> 
 <input type="submit" value="fill" />
+</form>
 <% end %>
 <% end %>
 </td>

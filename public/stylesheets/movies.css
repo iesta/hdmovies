@@ -1,4 +1,10 @@
-body { background: #336699; color: #333; }
+body { 
+	background: #336699; 
+	background: url(/images/bg.png);
+	background-repeat-x: initial;
+	background-repeat-y: initial;
+	color: #333; 
+}
 
 body, p, ol, ul, td {
   font-family: tahoma, verdana, arial, helvetica, sans-serif;
@@ -65,9 +71,9 @@ div.field, div.actions {
 	background: white;
 	padding: 10px;
 	margin:0 auto;
-	border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
 }
 /* paginator */
 .pagination {

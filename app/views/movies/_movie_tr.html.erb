@@ -1,30 +1,40 @@
   <tr>
 	<td>
 	<% if movie.photo_file_name %>
-	<%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %> 
+	<%= image_tag(movie.photo.url(:small), :alt => movie.title) %> 
 	<% else %>
 	add
 	<% end %>
 	</td>
     <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong>
+	<br><%= movie.alt_title -%>
 	<br><span class="small_genre"><%= movie.genre_list -%></span>
 	</td>
     <td>
-	<strong>
+	<span style="font-size:24px">
 	<% if movie.url_imdb && movie.imdb_score %>
 	<%= link_to movie.imdb_score, movie.url_imdb %>
 	<% else %>
 	<%= movie.imdb_score -%>
-	<% end %></strong> 
+	<% end %>
+	</span> 
 	</td>
-	<td><%= number_with_precision(movie.average, :precision => 1) -%></td>
-    <td><%= movie.critics.size %></td>
-    <td><%= movie.quality %></td>
-    <td><%= movie.languages %></td>
-    <td><%= movie.subs %></td>
-    <td><%= movie.cast %></td>
-    <td><%= movie.director %></td>
-    <td><%= link_to(movie.user.username,movie.user) if movie.user %></td>
+	<td><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
+	<br><%= movie.critics.size %> critic
+		</td>
+    <td><%= movie.quality %><br>
+	<%= movie.format -%>
+	</td>
+    <td>Audio : <%= movie.languages %>
+	<br>
+	Subs : <%= movie.subs %>
+	</td>
+    <td><% if movie.director %>by <%= movie.director %><% end %>
+	<% if movie.cast %>
+	<br>
+	with <%= movie.cast %>
+	<% end %>
+	</td>
 <!--     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>

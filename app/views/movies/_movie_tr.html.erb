@@ -6,7 +6,7 @@
 	add
 	<% end %>
 	</td>
-    <td><strong><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong>
+    <td><span><strong style="font-size:18px"><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></span>
 	<br><%= movie.alt_title -%>
 	<br><span class="small_genre"><%= movie.genre_list -%></span>
 	</td>
@@ -22,12 +22,26 @@
 	<td><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
 	<br><%= movie.critics.size %> critic
 		</td>
-    <td><%= movie.quality %><br>
-	<%= movie.format -%>
-	</td>
-    <td>Audio : <%= movie.languages %>
-	<br>
-	Subs : <%= movie.subs %>
+    <td>
+	<table border="0" cellpadding="0">
+		<tr>
+			<td>Quality:</td>
+			<td><%= movie.quality %></td>
+		</tr>
+		<tr>
+			<td>Format:</td>
+			<td><%= movie.format -%></td>
+		</tr>
+		<tr>
+			<td>Audio:</td>
+			<td><%= movie.languages %></td>
+		</tr>
+		<tr>
+			<td>Subs:</td>
+			<td><%= movie.subs %></td>
+		</tr>
+	</table>
+	
 	</td>
     <td><% if movie.director %>by <%= movie.director %><% end %>
 	<% if movie.cast %>

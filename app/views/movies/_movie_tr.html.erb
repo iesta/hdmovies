@@ -10,15 +10,6 @@
 	<br><%= movie.alt_title -%>
 	<br><span class="small_genre"><%= movie.genre_list -%></span>
 	</td>
-    <td>
-	<span style="font-size:24px">
-	<% if movie.url_imdb && movie.imdb_score %>
-	<%= link_to movie.imdb_score, movie.url_imdb %>
-	<% else %>
-	<%= movie.imdb_score -%>
-	<% end %>
-	</span> 
-	</td>
 	<td><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
 	<br><%= movie.critics.size %> critic
 		</td>
@@ -49,6 +40,16 @@
 	with <%= movie.cast %>
 	<% end %>
 	</td>
+	<td align="center">
+	<span style="font-size:30px">
+	<% if movie.url_imdb && movie.imdb_score %>
+	<%= link_to movie.imdb_score, movie.url_imdb %>
+	<% else %>
+	<%= movie.imdb_score -%>
+	<% end %>
+	</span> 
+	</td>
+    
 <!--     <td><%= link_to 'Show', movie %></td>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>

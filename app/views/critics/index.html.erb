@@ -1,13 +1,6 @@
 <h1>Listing critics</h1>
 
 <table width="100%" cellpadding="3">
-<th></th>
-
-<!--     <th></th>
-    <th></th>
-    <th></th>
- -->  </tr>
-
 <% @critics.each do |critic| %>
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
 <% end %>

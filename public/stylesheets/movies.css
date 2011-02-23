@@ -110,12 +110,12 @@ div.field, div.actions {
   color: #ddd;
 }
 .big_score {
-	font-size: 18px;	
+	font-size: 28px;	
 	border-radius: 5px;
 	color: white;
 	background-color: #336699;
-	padding: 2px;
-	width: 22px;
+	padding: 8px;
+	width: 30px;
 	text-decoration:none;
 }
 .big_score:hover,.big_score:visited {

@@ -6,14 +6,17 @@
 	add
 	<% end %>
 	</td>
-    <td><span><strong style="font-size:18px"><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></span>
+    <td valign="top"><span><strong style="font-size:18px"><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></span>
 	<br><%= movie.alt_title -%>
 	<br><span class="small_genre"><%= movie.genre_list -%></span>
 	</td>
-	<td><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
-	<br><%= movie.critics.size %> critic
+	<td valign="top"><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
+	<br><%= movie.critics.size %> critic<br>
+	<% if current_user.critic_on(movie) %>
+	<%= image_tag "checked.png" -%>
+	<% end %>
 		</td>
-    <td>
+    <td valign="top">
 	<table border="0" cellpadding="0">
 		<tr>
 			<td>Quality:</td>
@@ -34,13 +37,13 @@
 	</table>
 	
 	</td>
-    <td><% if movie.director %>by <%= movie.director %><% end %>
+    <td valign="top"><% if movie.director %>by <%= movie.director %><% end %>
 	<% if movie.cast %>
 	<br>
 	with <%= movie.cast %>
 	<% end %>
 	</td>
-	<td align="center">
+	<td align="center" valign="top">
 	<span style="font-size:30px">
 	<% if movie.url_imdb && movie.imdb_score %>
 	<%= link_to movie.imdb_score, movie.url_imdb %>

@@ -6,7 +6,6 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
     xml.pubDate     CGI.rfc1123_date(@critics.first.updated_at) if @critics.any?
     xml.link        movies_url
 
-
     for critic in @critics
       xml.item do
         xml.title       critic.movie.title

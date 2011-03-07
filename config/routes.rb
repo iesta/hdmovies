@@ -12,8 +12,17 @@ Hdmovies::Application.routes.draw do |map|
     end
   end
   resources :user_sessions
-  resources :critics
-  resources :movies
+  resources :critics do
+    collection do
+      get :rss
+    end
+  end
+
+  resources :movies do
+    collection do
+      get :rss
+    end
+  end
   resources :genres
   match 'movies_grid' => 'movies#grid'
   match 'movies_sgrid' => 'movies#sgrid'

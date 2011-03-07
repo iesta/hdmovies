@@ -1,10 +1,10 @@
-xml.instruct! :xml, :version => "1.0" 
-xml.rss :version => "2.0" do
+xml.instruct!
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
     xml.title "HDiesta Movies"
     xml.description "Last releases on HDiesta"
+    xml.pubDate     CGI.rfc1123_date(@movies.first.updated_at) if @movies.any?
     xml.link movies_url
-
 
     for movie in @movies
       xml.item do
@@ -17,6 +17,7 @@ xml.rss :version => "2.0" do
         xml.pubDate movie.created_at.to_s(:rfc822)
         xml.link movie_url(movie)
         xml.guid movie_url(movie)
+        xml.author      "#{movie.user.username}"
       end
     end
   end

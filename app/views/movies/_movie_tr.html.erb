@@ -10,7 +10,7 @@
 	<br><%= movie.alt_title -%>
 	<br><span class="small_genre"><%= movie.genre_list -%></span>
 	</td>
-	<td valign="top"><strong><%= number_with_precision(movie.average, :precision => 1) -%></strong>
+	<td valign="top"><strong><%= number_with_precision(movie.average, :precision => 1) -%> / 20</strong>
 	<br><%= movie.critics.size %> critic<br>
 	<% if current_user.critic_on(movie) %>
 	<%= image_tag "checked.png" -%>

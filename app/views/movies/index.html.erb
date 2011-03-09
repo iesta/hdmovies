@@ -1,3 +1,17 @@
+<% feed = 'hdiesta' unless feed %>
+<div id="studio" class="boxh3 studio">
+<h3><a href="https://twitter.com/<%= feed -%>" title="">Twitter news</a></h3>
+<div id="tweets">
+</div>
+<script type="text/javascript" src="/javascripts/jquery.tweetable.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+ $('#tweets').tweetable({username: '<%= feed -%>'});
+});
+</script>
+</div>
+
+
 <table width="100%" border="1" cellspacing="0" cellpadding="3" style="border-collapse:collapse;border:1px solid lightgrey">
   <tr>
 	<th></th>

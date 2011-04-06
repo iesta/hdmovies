@@ -19,6 +19,8 @@ Hdmovies::Application.configure do
   
 #  config.active_support.deprecation to :log
 
-Paperclip.options[:command_path] = "/usr/local/bin"
+  Paperclip.options[:command_path] = "/usr/local/bin"
 
 end
+
+URL = "http://localhost:4000"

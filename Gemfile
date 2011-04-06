@@ -13,11 +13,12 @@ gem "sqlite3-ruby", :require => "sqlite3"
 
 #gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
-gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'paperclip' #, :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'will_paginate', ">=3.0.pre2"
 #gem 'fastercsv'
 gem 'acts-as-taggable-on', :git => 'git://github.com/mbleigh/acts-as-taggable-on.git'
 gem "jquery-rails"
+gem 'acts_as_api'
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test

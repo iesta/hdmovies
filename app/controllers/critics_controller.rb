@@ -1,8 +1,8 @@
 class CriticsController < ApplicationController
-  before_filter :require_user, :except => [:index]
-  before_filter(:only => :index) do |controller|
-    controller.send(:require_user) unless controller.request.format.rss?
-  end
+  before_filter :require_user, :except => [:index, :show]
+#  before_filter(:only => :index) do |controller|
+#    controller.send(:require_user) unless controller.request.format.rss?
+#  end
   
   # GET /critics
   # GET /critics.xml
@@ -12,6 +12,7 @@ class CriticsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @critics }
+      format.json  { render_for_api :base, :json => @critics }
       format.rss { render :layout => false } #index.rss.builder
     end
   end
@@ -24,6 +25,7 @@ class CriticsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @critic }
+      format.json  { render :json => @critic }
     end
   end
 

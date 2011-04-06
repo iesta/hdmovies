@@ -1,8 +1,8 @@
 class MoviesController < ApplicationController
-  before_filter :require_user, :except => :index
-  before_filter(:only => :index) do |controller|
-    controller.send(:require_user) unless controller.request.format.rss?
-  end
+  before_filter :require_user, :except => [:index, :show]
+  
+  respond_to :html
+  
   # GET /movies
   # GET /movies.xml
   def index
@@ -34,41 +34,22 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @movies }
       format.rss { render :layout => false } #index.rss.builder
+      format.json { render_for_api :base, :json => @movies, :root => :movies }
+      format.xml { render_for_api :base, :xml => @movies, :root => :movies }
     end
   end
   
   def grid
     @movies = Movie.where("photo_file_name IS NOT NULL").order('created_at DESC').paginate :per_page => 16, :page => params[:page]
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @movies }
-    end
   end
   
   def sgrid
     @movies = Movie.where("photo_file_name IS NOT NULL").order('created_at DESC').paginate :per_page => 40, :page => params[:page]
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @movies }
-    end    
   end
 
   def full
     @movies = Movie.order('title ASC')
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @movies }
-    end
-  end
-
-
-  def stats
-    @movies_size = Movie.count
-    @movies_w_pics_size = Movie.count(:conditions => "photo_file_name IS NOT NULL")
-    @critics_size = Critic.count
-    @users_size = User.count
   end
 
   # GET /movies/1
@@ -79,6 +60,8 @@ class MoviesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @movie }
+      format.json { render_for_api :base, :json => @movie }
+      format.xml { render_for_api :base, :xml => @movie }
     end
   end
 
@@ -140,5 +123,13 @@ class MoviesController < ApplicationController
       format.html { redirect_to(movies_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  # some basic stats
+  def stats
+    @movies_size = Movie.count
+    @movies_w_pics_size = Movie.count(:conditions => "photo_file_name IS NOT NULL")
+    @critics_size = Critic.count
+    @users_size = User.count
   end
 end

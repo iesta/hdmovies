@@ -1,0 +1,11 @@
+<div data-role="header">
+<h1><%= @movie.title -%></h1>
+<%= link_to 'Home', movies_url, "class" => "ui-btn-right" %>
+</div>
+ 
+<div data-role="content">
+<% if @movie.photo_file_name %>
+<%= image_tag(@movie.photo.url(:medium), :alt => @movie.title) %> 
+Score imdb : <%= @movie.imdb_score -%>
+</div>
+<% end %>

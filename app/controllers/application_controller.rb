@@ -17,8 +17,21 @@ class ApplicationController < ActionController::Base
     $0 = "hdm_: " + request.path[0,20]
   end
   
+  before_filter :adjust_format_for_iphone
 
+ 
   private
+
+  def adjust_format_for_iphone
+    request.format = :iphone #if iphone_request?
+  end
+
+  # Return true for requests to iphone.trawlr.com
+  def iphone_request?
+    #return (request.subdomains.first == "iphone" || params[:format] == "iphone")
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  end
+
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

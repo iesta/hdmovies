@@ -34,6 +34,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.iphone # index.iphone.erb
       format.rss { render :layout => false } #index.rss.builder
       format.json { render_for_api :base, :json => @movies, :root => :movies }
       format.xml { render_for_api :base, :xml => @movies, :root => :movies }
@@ -59,6 +60,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.iphone #{ render :layout => false } # show.iphone.erb
       format.xml  { render :xml => @movie }
       format.json { render_for_api :base, :json => @movie }
       format.xml { render_for_api :base, :xml => @movie }

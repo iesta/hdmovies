@@ -6,6 +6,46 @@
 <div data-role="content">
 <% if @movie.photo_file_name %>
 <%= image_tag(@movie.photo.url(:medium), :alt => @movie.title) %> 
-Score imdb : <%= @movie.imdb_score -%>
-</div>
+<br /><br />
 <% end %>
+<ul data-role="listview">
+<li>
+<em><%= @movie.alt_title %></em>
+<br />
+<strong>Genres</strong> : <%= @movie.genre_list -%><br />
+<b>Imdb</b> : <%= @movie.imdb_score -%>
+<br />
+		<b>Quality:</b>
+		<%= @movie.quality %>
+		<br>
+
+		<b>Languages:</b>
+		<%= @movie.languages %>
+		<br>
+
+		<b>Subs:</b>
+		<%= @movie.subs %>
+		<br>
+
+		<b>Size:</b>
+		<%= @movie.size %> Gb
+		<br>
+
+		<b>Format:</b>
+		<%= @movie.format %>
+		<br>
+		<b>Origin</b> <%= @movie.origin %>
+
+
+</li>
+<li><H3>Critics (<%= @movie.critics.size -%>)</h3></li>
+<% for c in @movie.critics %>
+<li>
+		by <strong><%=  c.user.username -%></strong> <% if c.score %><strong>(<%= c.score -%>/20)</strong><% end %>
+		<br />
+		<%= c.content -%>
+</li>
+<% end %>
+
+</div>
+

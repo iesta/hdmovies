@@ -7,6 +7,7 @@
    	<% if movie.photo_file_name %>
 	<%= image_tag(movie.photo.url(:xsmall), :alt => movie.title) %> 
 	<% end %>
+
       <%= link_to movie.title, movie %>
       <%# link_to 'edit movie', edit_movie_path(movie), "data-icon" => "gear" %>
     </li>

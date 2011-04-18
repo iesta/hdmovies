@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   private
 
   def adjust_format_for_iphone
-    request.format = :iphone #if iphone_request?
+    request.format = :iphone if iphone_request?
   end
 
   # Return true for requests to iphone.trawlr.com

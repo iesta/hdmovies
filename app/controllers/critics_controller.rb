@@ -1,8 +1,8 @@
 class CriticsController < ApplicationController
-  before_filter :require_user, :except => [:index, :show]
-#  before_filter(:only => :index) do |controller|
-#    controller.send(:require_user) unless controller.request.format.rss?
-#  end
+  before_filter :require_user, :except => [:index]
+  before_filter(:only => :index) do |controller|
+    controller.send(:require_user) unless controller.request.format.rss?
+  end
   
   # GET /critics
   # GET /critics.xml

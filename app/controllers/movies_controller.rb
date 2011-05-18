@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_filter :require_user, :except => [:index]
   before_filter(:only => :index) do |controller|
-    controller.send(:require_user) unless controller.request.format.rss?
+    controller.send(:require_user) unless (controller.request.format.rss? || controller.request.format.json?)
   end
   
   respond_to :html
@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
       format.html # index.html.erb
       format.iphone # index.iphone.erb
       format.rss { render :layout => false } #index.rss.builder
-      format.json { render_for_api :base, :json => @movies, :root => :movies }
+      format.json { render_for_api :base, :json => @movies }
       format.xml { render_for_api :base, :xml => @movies, :root => :movies }
     end
   end

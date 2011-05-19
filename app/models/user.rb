@@ -25,5 +25,11 @@ class User < ActiveRecord::Base
   def critics_count
     self.critics.count
   end
-
+  
+  # this return a list of movie not yet criticized
+  def mustsee
+    # must use this 2 steps becausesqlite doe snot support right joins or the join i needed
+    seen = Critic.where(["user_id = ?",self.id]).select('movie_id').map{|m| m.movie_id}.join(',')
+    Movie.where("id NOT IN (#{seen})")
+  end
 end

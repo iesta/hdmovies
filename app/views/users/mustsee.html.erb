@@ -1,0 +1,7 @@
+<h2>Mustsee of <%= @user.username -%> <span class="small">not yet criticized</span></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="3" style="border-collapse:collapse;border:1px solid lightgrey">
+<% for movie in @movies %>
+<%= render :partial => '/movies/movie_tr', :locals => {:movie => movie} -%>
+<% end %>
+</table>
+<%= will_paginate @movies -%>

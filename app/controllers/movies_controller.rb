@@ -23,6 +23,8 @@ class MoviesController < ApplicationController
           order = "imdb_score DESC"
         when 'title'
           order = "title ASC"
+        when 'year'
+          order = "year DESC"
         end
         
       else
@@ -55,7 +57,15 @@ class MoviesController < ApplicationController
   def full
     @movies = Movie.order('title ASC')
   end
-
+  
+  def year
+    if params[:id]
+      @movies = Movie.where(["year = ?", params[:id].to_i]).order('year DESC,created_at DESC')
+    else
+      @movies = Movie.where("year IS NOT NULL").order('year DESC,created_at DESC')
+    end
+  end
+  
   # GET /movies/1
   # GET /movies/1.xml
   def show

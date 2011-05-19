@@ -1,0 +1,25 @@
+<div id="menu" class="menu" style="float:right">
+	<% if current_user %>
+	<%= link_to "account: " + current_user.username , user_path(current_user.id) %> 
+	<%= link_to "mustsee", mustsee_user_path(current_user) %>
+	<% if current_user.superuser %>
+	<a href="/movies/new" id="new">add movie</a> 
+	<a href="/users" id="new">users list</a> 
+	<% end %>
+	<%= link_to "logout", logout_path %>
+	<% else %>
+	<!-- <%= link_to "Register", new_user_path %> -->
+	<%= link_to "Login", login_path %>
+	<% end %>
+</div><br/>
+<div id="menu2" class="menu" style="float:right;padding-top:9px">
+	<a href="/movies" id="list">Movies</a> 
+	<a href="/movies_grid" id="new">L grid</a> <a href="/movies_sgrid" id="new">S grid</a> 
+	<!-- <a href="/movies/?m=series" id="list">Series</a> -->
+	<a href="/requests" id="list">Requests</a>
+	<a href="/genres" id="new">Tags</a> 
+	<a href="/year" id="new">Years</a> 
+	<a href="/critics" id="list">Critics</a>
+	<a href="/stats" id="list">Stats</a>
+</div>
+</div>

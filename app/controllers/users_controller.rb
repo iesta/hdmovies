@@ -23,10 +23,19 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET /users/1,critics
+  # GET /users/1/critics
   def critics
     @user = User.find(params[:id])
     @critics = @user.critics.paginate(:per_page => 15, :page => params[:page])
+    respond_to do |format|
+      format.html # critics.html.erb
+    end
+  end
+  
+  # GET /users/1/mustsee
+  def mustsee
+    @user = User.find(params[:id])
+    @movies = @user.mustsee.order('created_at DESC').paginate(:per_page => 25, :page => params[:page])
     respond_to do |format|
       format.html # critics.html.erb
     end

@@ -6,51 +6,57 @@
 	add
 	<% end %>
 	</td>
-    <td valign="top"><span><strong style="font-size:18px"><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></span>
-	<br><%= movie.alt_title -%>
-	<br><span class="small_genre"><%= movie.genre_list -%></span>
+	<td valign="top">
+	<b class="large"><%= movie.year -%></b>
 	</td>
-	<td valign="top"><strong><%= number_with_precision(movie.average, :precision => 1) -%> / 20</strong>
-	<br><%= movie.critics.size %> critic<br>
-	<% if current_user.critic_on(movie) %>
-	<%= image_tag "checked.png" -%>
-	<% end %>
+
+    <td valign="top">
+	<span class="movie_title">
+		<%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %>
+	</span>
+	<% if movie.alt_title && movie.alt_title.size>0 %><br><%= movie.alt_title -%><% end %>
+	<% if movie.genre_list && movie.genre_list.size>0 %><br><span class="small_genre"><%= movie.genre_list -%></span><% end %>
+	<% if movie.director && movie.director.size>0 %><br>by <%= movie.director %><% end %>
+	<% if movie.cast && movie.cast.size>0%><br><span class="small">with <%= movie.cast %></span><% end %>
+	</td>
+	<td valign="top" width="110">
+		<% if movie.critics.size>0 %>
+		<strong><%= number_with_precision(movie.average, :precision => 1) -%> / 20</strong>
+		<br><%= movie.critics.size %> critic<br>
+			<% if current_user.critic_on(movie) %>
+				<%= image_tag "checked.png" -%>
+			<% end %>
+		<% else %>
+		<%= link_to 'add first critic', movie_path(movie) -%>
+		<% end %>
 		</td>
     <td valign="top">
-	<table border="0" cellpadding="0">
-		<tr>
-			<td>Quality:</td>
-			<td><%= movie.quality %></td>
-		</tr>
-		<tr>
-			<td>Format:</td>
-			<td><%= movie.format -%></td>
-		</tr>
-		<tr>
-			<td>Audio:</td>
-			<td><%= movie.languages %></td>
-		</tr>
-		<tr>
-			<td>Subs:</td>
-			<td><%= movie.subs %></td>
-		</tr>
-	</table>
+		<table border="0" cellpadding="0">
+			<tr>
+				<td>Quality:</td>
+				<td><%= movie.quality %></td>
+			</tr>
+			<tr>
+				<td>Format:</td>
+				<td><%= movie.format -%></td>
+			</tr>
+			<tr>
+				<td>Audio:</td>
+				<td><%= movie.languages %></td>
+			</tr>
+			<tr>
+				<td>Subs:</td>
+				<td><%= movie.subs %></td>
+			</tr>
+		</table>
+	</td>
 	
-	</td>
-    <td valign="top"><% if movie.director %>by <%= movie.director %><% end %>
-	<% if movie.cast %>
-	<br>
-	with <%= movie.cast %>
+	<td width="80" align="center" valign="top">
+	<% if movie.imdb_score %>
+		<div class="big_score">
+		<%= link_to movie.imdb_score, movie.url_imdb %>
+		</div> 
 	<% end %>
-	</td>
-	<td align="center" valign="top">
-	<span style="font-size:30px">
-	<% if movie.url_imdb && movie.imdb_score %>
-	<%= link_to movie.imdb_score, movie.url_imdb %>
-	<% else %>
-	<%= movie.imdb_score -%>
-	<% end %>
-	</span> 
 	</td>
     
 <!--     <td><%= link_to 'Show', movie %></td>

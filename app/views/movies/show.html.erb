@@ -1,5 +1,5 @@
 <div class="grid_10">
-	<h1><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
+	<h1 class="movie_title"><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
 <div class="grid_2">
 	<% if current_user.superuser %>

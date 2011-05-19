@@ -42,6 +42,37 @@ a:hover { color: #000; text-decoration: underline; }
 	font-size:12px;
 	font-weight: normal;
 }
+.large {
+	font-size:20px;
+	font-weight: normal;
+}
+
+.movie_title {
+	font-family: 'Lobster', arial, serif;
+	font-size: 28px;
+}
+
+/* big score button */
+.big_score {
+	font-size:30px;
+	padding:12px;
+	background-color: mediumseagreen;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.big_score:hover {
+	cursor: pointer;
+	background-color: black;
+}
+.big_score a {
+	padding: 0px;
+	color: white;
+}
+.big_score a:hover {
+	text-decoration: none;
+}
+
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -128,18 +159,7 @@ div.field, div.actions {
   border: 1px solid #eee;
   color: #ddd;
 }
-.big_score {
-	font-size: 28px;	
-	border-radius: 5px;
-	color: white;
-	background-color: #336699;
-	padding: 8px;
-	width: 30px;
-	text-decoration:none;
-}
-.big_score:hover,.big_score:visited {
-	color:white;
-}
+
 .very_big {
 	font-size: 30px;
 	line-height: 58px;
@@ -147,4 +167,15 @@ div.field, div.actions {
 }
 .small_genre {
 	font-size:10px;
+}
+
+/* forms */
+.large_form input {
+	font-size: 20px;
+}
+
+/* misc */
+
+#tweets li {
+	list-style-image: url(../images/twitter.png)
 }

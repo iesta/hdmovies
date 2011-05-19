@@ -1,0 +1,12 @@
+<% y = -1 %>
+<% for movie in @movies %>
+	<% if movie.year!=y %>
+		<% y = movie.year ; c = 0 %>
+		<h1><%= link_to y, year_url(y) -%></h1>
+	<% end %>
+	<% if movie.photo_file_name && c<16 %>
+		<%= link_to( image_tag(movie.photo.url(:small), :alt => movie.title) , movie_path(movie) ) %> 
+	<% else %>
+	<% end %>
+	<% c += 1 unless params[:id] %>
+<% end %>

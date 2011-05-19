@@ -10,6 +10,7 @@ Hdmovies::Application.routes.draw do |map|
       post 'add_to_list'
       post 'remove_from_list'
       get  'critics'
+      get  'mustsee'
     end
   end
   
@@ -26,11 +27,15 @@ Hdmovies::Application.routes.draw do |map|
       get :rss
     end
   end
+  
   resources :genres
-  match 'movies_grid' => 'movies#grid'
-  match 'movies_sgrid' => 'movies#sgrid'
-  match 'movies_full' => 'movies#full'
-  match 'stats' => 'movies#stats'
+  
+  # some non restful routes for movies
+  match 'movies_grid'   => 'movies#grid'
+  match 'movies_sgrid'  => 'movies#sgrid'
+  match 'movies_full'   => 'movies#full'
+  match 'stats'         => 'movies#stats'
+  match 'year(/:id)'    => 'movies#year' , :as => :year
   
   # config/routes.rb
   map.login "login", :controller => "user_sessions", :action => "new"

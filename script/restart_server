@@ -1,0 +1,4 @@
+#!/bin/sh
+
+kill -s QUIT `cat tmp/pids/unicorn.pid`
+unicorn_rails -c config/unicorn.rb -E production -D

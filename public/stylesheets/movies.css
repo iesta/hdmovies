@@ -24,6 +24,25 @@ a {
 a:visited { color: #5588bb; }
 a:hover { color: #000; text-decoration: underline; }
 
+#s{ font-size: 30px}
+
+#logo a:hover{text-decoration:none;}
+
+.menu>a {
+	border:1px solid lightblue;
+	padding:2px;
+}
+
+.menu>a:hover {
+	border:1px solid black;
+	text-decoration:none;
+}
+
+.small {
+	font-size:12px;
+	font-weight: normal;
+}
+
 div.field, div.actions {
   margin-bottom: 10px;
 }

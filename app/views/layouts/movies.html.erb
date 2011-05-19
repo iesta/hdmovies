@@ -5,10 +5,6 @@
 <%= stylesheet_link_tag 'movies','960' %>
 <%= javascript_include_tag :defaults %>
 <%= csrf_meta_tag %>
-<style type="text/css" media="screen">
-	#logo a:hover{text-decoration:none;}
-	#menu>a {padding:5px;}
-</style>
 </head>
 <body>
 <div id="container">
@@ -17,35 +13,41 @@
 			<div id="logo"><a href="/"><img src="/images/logo.png" alt="HDMovies" /></a></div>
 		</div>
 		<div class="grid_2">
-			<form action="/movies" method="GET"><input name="s" type="search"></form>
+			<form action="/movies" method="GET"><input name="s" type="search" id="s" size="18" placeholder="Search"></form>
+			<div id="menu3" class="" style="">
+				&nbsp;
+						<a href="https://twitter.com/<%= TwitterAccount -%>" title="Twitter" target="_blank"><%= image_tag "twitter.png" -%></a>
+						<a href="/movies.rss" id="rss" target="_blank"  title="Movies RSS"><%= image_tag "rss.png" -%></a> 
+						<a href="/critics.rss" id="rss" target="_blank" title="Critics RSS"><%= image_tag "crss.png" -%></a> 
+			</div>
+			
 		</div>
 		<div class="grid_7">
-		<div id="menu" style="float:right">
-			<% if current_user && current_user.superuser %>
-					<a href="/movies/new" id="new">add</a> 
-					<a href="/users" id="new">Users</a> 
-			<% end %>
-					<a href="/movies" id="list">Movies</a> 
-					<a href="/movies.rss" id="rss"><%= image_tag "rss.png" -%></a> 
-					<a href="/movies_grid" id="new">L</a> <a href="/movies_sgrid" id="new">S</a> 
-<!-- 					<a href="/movies/?m=series" id="list">Series</a> -->
-					<a href="/requests" id="list">Req</a>
-					<a href="/genres" id="new">Tags</a> 
-					<a href="/critics" id="list">Critics</a>
-					<a href="/critics.rss" id="rss"><%= image_tag "crss.png" -%></a> 
-					<a href="/stats" id="list">Stats</a>
-					&nbsp;
-					|
-					&nbsp;
-					<% if current_user %>
-					    <%= link_to current_user.username , user_path(current_user.id) %> 
-					    <%= link_to "Out", logout_path %>
-					  <% else %>
-<!-- 				    <%= link_to "Register", new_user_path %>  -->
-					    <%= link_to "Login", login_path %>
-					  <% end %>
-				</div>
+		<div id="menu" class="menu" style="float:right">
+				<% if current_user %>
+				    <%= link_to "Account: " + current_user.username , user_path(current_user.id) %> 
+					<% if current_user.superuser %>
+							<a href="/movies/new" id="new">add movie</a> 
+							<a href="/users" id="new">users list</a> 
+					<% end %>
+				
+				    <%= link_to "logout", logout_path %>
+				  <% else %>
+<!-- 			    <%= link_to "Register", new_user_path %>  -->
+				    <%= link_to "Login", login_path %>
+				  <% end %>
+		</div><br/>
+			<div id="menu2" class="menu" style="float:right;padding-top:9px">
+						<a href="/movies" id="list">Movies</a> 
+						<a href="/movies_grid" id="new">Large grid</a> <a href="/movies_sgrid" id="new">Small grid</a> 
+	<!-- 					<a href="/movies/?m=series" id="list">Series</a> -->
+						<a href="/requests" id="list">Requests</a>
+						<a href="/genres" id="new">Tags</a> 
+						<a href="/critics" id="list">Critics</a>
+						<a href="/stats" id="list">Stats</a>
+			</div>
 		</div>
+		
 		<div class="clear"></div> 
 		<div class="grid_12">
 			<% if notice %>

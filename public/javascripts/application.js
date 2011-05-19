@@ -1,2 +1,9 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function() {
+	// we catch 'f' and 's' keypresses only of no activeElement
+	$('body').keypress(function(event) {
+		if ($(document.activeElement) && (event.which == '102' || event.which == '70' || event.which == '115' || event.which == '83')) {
+			event.preventDefault();
+			$('#s').val('').select();
+		}
+	});
+});

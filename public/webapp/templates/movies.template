@@ -1,4 +1,4 @@
 <div class="movie">
-        <div class="movie-image"><a href="#/movie/<%= movie.id %>"><img src="<%= movie.img %>" alt="<%= movie.title %>" /></a></div>
+        <div class="movie-image"><a href="#/movie/<%= movie.id %>"><img src="<%= movie.base_url_path %>" alt="<%= movie.title %>" /></a></div>
         <div class="movie-title"><%= movie.title %></div>
 </div>

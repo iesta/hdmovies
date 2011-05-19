@@ -4,7 +4,10 @@
 <td valign="top">
 <strong><span style="font-size:20px"><%= link_to critic.movie.title, critic.movie %></span></strong> by <%= link_to critic.user.username, critic.user %><br>
 <p><%= critic.content %></p>
-<% if critic.user==current_user %><%= link_to "edit", edit_critic_path(critic, :return_to => 'critics') -%><% end %>
+added on <%= timeformat(critic.created_at) -%>
+<% if critic.user==current_user %><br>
+<%= link_to "edit", edit_critic_path(critic, :return_to => 'critics') -%>
+<% end %>
 </td>
   <!-- <td><%= link_to 'Show', critic %></td>
   <td><%= link_to 'Edit', edit_critic_path(critic) %></td>

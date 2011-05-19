@@ -3,41 +3,24 @@
   <%= @user.username %> (<%= @user.email %>)
 </p>
 
-
 <h2>Wants to see</h2>
 
-<table width="100%" border="1" cellspacing="0">
-  <tr>
-	<th></th>
-    <th>Title</th>
-    <th>Imdb</th>
-    <th>Aver.</th>
-    <th>Quality</th>
-    <th>Languages</th>
-    <th>Subs</th>
-    <th>Cast</th>
-    <th>Director</th>
-    <th>Critics</th>
-    <th>By</th>
-  </tr>
+<table>
 <% for movie in @user.movies %>
-<%= render :partial => '/movies/movie_tr', :locals => {:movie => movie} -%>
+<tr>
+	<td><strong style="font-size:18px"><%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %></strong></td>
+	<td></td>
+</tr>
 <% end %>
 </table>
 
-
-
-<h2>Critics</h2>
-
+<h2>Last critics <a href="<%= critics_user_path(@user) -%>" class="small">see all</a></h2>
 <table>
   <tr>
-<% for critic in @user.critics.order('created_at DESC') %>
+<% for critic in @user.critics.order('created_at DESC').limit(10) %>
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
 <% end %>
 </table>
-
-
-
 
 <% if current_user.superuser %>
 <br>

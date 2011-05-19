@@ -22,6 +22,15 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @user }
     end
   end
+  
+  # GET /users/1,critics
+  def critics
+    @user = User.find(params[:id])
+    @critics = @user.critics.paginate(:per_page => 15, :page => params[:page])
+    respond_to do |format|
+      format.html # critics.html.erb
+    end
+  end
 
   # GET /users/new
   # GET /users/new.xml

@@ -19,9 +19,9 @@
 	<% if movie.director && movie.director.size>0 %><br>by <%= movie.director %><% end %>
 	<% if movie.cast && movie.cast.size>0%><br><span class="small">with <%= movie.cast %></span><% end %>
 	</td>
-	<td valign="top" width="110">
+	<td valign="top" width="90">
 		<% if movie.critics.size>0 %>
-		<strong><%= number_with_precision(movie.average, :precision => 1) -%> / 20</strong>
+		<div class="big_score score"><%= number_with_precision(movie.average, :precision => 1) -%></div>
 		<br><%= movie.critics.size %> critic<br>
 			<% if current_user.critic_on(movie) %>
 				<%= image_tag "checked.png" -%>

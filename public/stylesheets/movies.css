@@ -54,6 +54,7 @@ a:hover { color: #000; text-decoration: underline; }
 
 /* big score button */
 .big_score {
+	color: white;
 	font-size:30px;
 	padding:12px;
 	background-color: mediumseagreen;
@@ -73,6 +74,9 @@ a:hover { color: #000; text-decoration: underline; }
 	text-decoration: none;
 }
 
+.score {
+	background-color: #336699;
+}
 
 div.field, div.actions {
   margin-bottom: 10px;

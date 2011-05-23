@@ -1,13 +1,19 @@
-<h1>Listing critics</h1>
+<br>
+<%= will_paginate @critics %>  
 
-<table width="100%" cellpadding="3">
+<% i=0 %>
 <% @critics.each do |critic| %>
+<div class="grid_6" style="padding-bottom:20px">
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
+</div>
+<% i += 1 %>
+<% if i%2==0 %>
+	<div class="clear"></div> 
 <% end %>
-</table>
+<% end %>
 
 <br />
 
-<%= will_paginate @critics %> 
+<%= will_paginate @critics %>
 
 <!-- <%= link_to 'New critic', new_critic_path %> -->

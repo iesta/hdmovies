@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   acts_as_authentic
   acts_as_api
   
+  has_many :critics
+  
   api_accessible :base do |template|
      template.add :id
      template.add :username
@@ -31,5 +33,10 @@ class User < ActiveRecord::Base
     # must use this 2 steps becausesqlite doe snot support right joins or the join i needed
     seen = Critic.where(["user_id = ?",self.id]).select('movie_id').map{|m| m.movie_id}.join(',')
     Movie.where("id NOT IN (#{seen})")
+  end
+  
+  # average score
+  def average_score
+    self.critics.average('score')
   end
 end

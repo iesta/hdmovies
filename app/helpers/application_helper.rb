@@ -8,4 +8,11 @@ module ApplicationHelper
     end
   end
 
+  def dateformat(t)
+    begin
+      return t.strftime("%d-%m-%Y")
+    rescue
+      ""
+    end
+  end
 end

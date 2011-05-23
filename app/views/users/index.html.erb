@@ -1,10 +1,11 @@
-<h1>Listing users</h1>
+<h1>HD users</h1>
 
-<table>
-  <tr>
+<table width="100%">
+  <tr align="left">
     <th>Username</th>
     <th>Email</th>
-<th>Critics</th>
+	<th>Critics</th>
+	<th>Average score</th>
   </tr>
 
 <% @users.each do |user| %>
@@ -12,6 +13,7 @@
     <td><%= link_to user.username, user %> <% if user.superuser %><% end %></td>
     <td><%= user.email %></td>
 	<td><%= user.critics.size -%></td>
+	<td><%= number_to_human user.average_score -%></td>
   </tr>
 <% end %>
 </table>

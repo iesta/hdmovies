@@ -15,12 +15,15 @@
 </table>
 
 <h2>Last critics <a href="<%= critics_user_path(@user) -%>" class="small">see all</a></h2>
-<table>
-  <tr>
+<% i=0 %>
 <% for critic in @user.critics.order('created_at DESC').limit(10) %>
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
+<% i += 1 %>
+<% if i%2==0 %>
+	<div class="clear"></div> 
 <% end %>
-</table>
+<% end %>
+
 
 <% if current_user.superuser %>
 <br>

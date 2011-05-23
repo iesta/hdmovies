@@ -95,6 +95,22 @@ class MoviesController < ApplicationController
   def edit
     @movie = Movie.find(params[:id])
   end
+  
+  # try to get data from freebase
+  def freebase
+#    require "#{RAILS_ROOT}/lib/ken/lib/ken"
+    require 'rubygems'
+    require 'ken/lib/ken'
+    @movie = Movie.find(params[:id])
+    if @movie.freebase
+      slug = '/en/' + @movie.freebase.split('/').last
+    else
+      slug = '/en/' + @movie.title.rstrip.gsub(/\s/,'_')
+    end
+    @resource = Ken.get(slug)
+    
+    
+  end
 
   # POST /movies
   # POST /movies.xml

@@ -26,6 +26,9 @@ Hdmovies::Application.routes.draw do |map|
     collection do
       get :rss
     end
+    member do
+      get :freebase
+    end
   end
   
   resources :genres

@@ -52,6 +52,9 @@ a:hover { color: #000; text-decoration: underline; }
 	font-family: 'Lobster', arial, serif;
 	font-size: 28px;
 }
+.large_movie_title {
+	font-size: 38px;
+}
 
 /* big score button */
 .big_score {

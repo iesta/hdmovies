@@ -40,7 +40,7 @@ a:hover { color: #000; text-decoration: underline; }
 }
 
 .small {
-	font-size:12px;
+	font-size:13px;
 	font-weight: normal;
 }
 .large {
@@ -174,7 +174,7 @@ div.field, div.actions {
 	padding: 7px;
 }
 .small_genre {
-	font-size:10px;
+	font-size:11px;
 }
 
 /* forms */

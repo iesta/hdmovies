@@ -155,7 +155,7 @@ class MoviesController < ApplicationController
       #render 'edit'
 =end
     rescue
-      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + slug)
+      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + @movie.freebase)
     end  
   end
 

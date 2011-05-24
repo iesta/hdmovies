@@ -117,6 +117,7 @@ class MoviesController < ApplicationController
       raise unless @result
     logger.debug @result.inspect
       # see example of json to parse : http://www.freebase.com/experimental/topic/standard/m/09k56b7
+      @movie.alt_title = @result['text']
       @movie.country = @result['properties']['/film/film/country']['values'][0]['text']
       @movie.body = @result['description']
       @movie.genre_list = @result['properties']['/film/film/genre']['values'].map{|g| g['text']} #.join(',')

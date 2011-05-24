@@ -15,9 +15,10 @@
 		<%= link_to movie.title, movie_path(movie), :style => (movie.deleted ? 'text-decoration: line-through' : '') %>
 	</span>
 	<% if movie.alt_title && movie.alt_title.size>0 %><br><%= movie.alt_title -%><% end %>
-	<% if movie.genre_list && movie.genre_list.size>0 %><br><span class="small_genre"><%= movie.genre_list -%></span><% end %>
-	<% if movie.director && movie.director.size>0 %><br>by <%= movie.director %><% end %>
-	<% if movie.cast && movie.cast.size>0%><br><span class="small">with <%= movie.cast %></span><% end %>
+	<% if movie.director && movie.director.size>0 %><br><span class="small"><strong>by</strong> <%= movie.director %></span><% end %>
+	<% if movie.cast && movie.cast.size>0%><br><span class="small"><strong>with</strong> <%= movie.cast %></span><% end %>
+	<p>	<% if movie.genre_list && movie.genre_list.size>0 %><br><span class="small_genre"><%= movie.genre_list -%></span><% end %>
+	</p>
 	</td>
 	<td valign="top" width="90">
 		<% if movie.critics.size>0 %>

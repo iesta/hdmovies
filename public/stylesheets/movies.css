@@ -31,12 +31,13 @@ a:hover { color: #000; text-decoration: underline; }
 
 .menu>a {
 	border:1px solid lightblue;
-	padding:2px;
+	padding:3px;
 }
 
 .menu>a:hover {
 	border:1px solid black;
 	text-decoration:none;
+	background: #EEE;
 }
 
 .small {
@@ -187,4 +188,7 @@ div.field, div.actions {
 
 #tweets li {
 	list-style-image: url(../images/twitter.png)
+}
+hr {
+	border: 1px dashed lightgrey;
 }

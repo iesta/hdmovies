@@ -2,6 +2,25 @@
 	<h1 class="movie_title large_movie_title"><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
 <div class="clear"></div> 
+<div class="grid_12">
+	<div id="movie_menu" class="menu" style="float:left">
+	<% if current_user.superuser %>
+	<%= link_to 'Edit movie', edit_movie_path(@movie) %> 
+	<%= link_to 'Destroy movie', @movie, :confirm => "Are you sure?", :method => :delete %>
+	<%= link_to 'Freebase lookup', freebase_movie_path(@movie) %>
+	<% end %>
+	<% if current_user.movies.include?(@movie) %>
+	<%= link_to 'Remove from wishlist', remove_from_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+	<% else %>
+	<%= link_to 'Add to my wishlist', add_to_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+	<% end %>
+	
+	<%= render :partial => "assets_links" -%>
+	
+	</div>
+</div>
+
+<div class="clear"></div>
 
 <div class="grid_6"> 
 	<p> 
@@ -44,19 +63,6 @@
 </div> 
 <!-- end .grid_4 --> 
 <div class="grid_6"> 
-		<div id="movie_menu" class="menu" style="float:left">
-		<% if current_user.superuser %>
-		<%= link_to 'Edit movie', edit_movie_path(@movie) %> 
-		<%= link_to 'Destroy movie', @movie, :confirm => "Are you sure?", :method => :delete %>
-		<%= link_to 'Freebase lookup', freebase_movie_path(@movie) %>
-		<% end %>
-		<% if current_user.movies.include?(@movie) %>
-		<%= link_to 'Remove from wishlist', remove_from_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
-		<% else %>
-		<%= link_to 'Add to my wishlist', add_to_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
-		<% end %>
-		</div>
-<br>
 	<p> 
 		<p>
 			<em><%= @movie.alt_title %></em>
@@ -134,7 +140,7 @@
 
 	</p> 
 
-<%= render :partial => "assets_links" -%>
+
 
 	<H3>Critics (<%= @movie.critics.size -%>)</h3>
 

@@ -51,8 +51,11 @@
 <br>
 		<b>Filename:</b>
 		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %><br>
-		<b>Freebase:</b> <%= link_to @movie.freebase, @movie.freebase %>
-		<br>
+		
+		<% if @movie.freebase %>
+		<b>Freebase:</b> <%= link_to @movie.freebase, @movie.freebase %><br>
+		<% end %>
+		
 		<b>Added by:</b>
 		<%= link_to @movie.user.username, @movie.user %>
 		<br>
@@ -82,14 +85,22 @@
 		</p>
 		
 		<p>
+			<% if @movie.youtube_url && @movie.youtube_url.size>1 %>
 			<b>Youtube url:</b>
 			<%= link_to @movie.youtube_url,@movie.youtube_url %><br>
+			<% end %>
+			<% if @movie.apple_url && @movie.apple_url.size>1 %>
 			<b>Apple url:</b>
 			<%= link_to @movie.apple_url,@movie.apple_url %><br>
+			<% end %>
+			<% if @movie.wikipedia_url && @movie.wikipedia_url.size>1 %>
 			<b>Wikipedia:</b>
 			<%= link_to @movie.wikipedia_url,@movie.wikipedia_url %><br>
+			<% end %>
+			<% if @movie.traileraddict_url && @movie.traileraddict_url.size>1 %>
 			<b>TrailerAddict:</b>
 			<%= link_to @movie.traileraddict_url,@movie.traileraddict_url %>
+			<% end %>
 		</p>
 		
 		<p>

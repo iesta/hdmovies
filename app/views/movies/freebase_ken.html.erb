@@ -1,0 +1,22 @@
+<%= @resource.attribute('/film/film/tagline') -%>
+
+<%= @movie.inspect -%>
+
+<hr>
+<% for t in @resource.types %>
+<%= t.inspect -%> : <%= t -%><br>
+<% end %>
+
+<hr>
+<% for t in @resource.attributes %>
+<%= t.inspect -%> : <%= t -%><br>
+	<% t.values.each{|m| %>
+		&nbsp;&nbsp;&nbsp;&nbsp;<%= m.inspect -%> : <%= m -%><br>
+	<% } %>
+<% end %>
+
+<hr>
+<% for t in @resource.views %>
+<%= t.inspect -%> : <%= t -%><br>
+<% end %>
+

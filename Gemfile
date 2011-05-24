@@ -19,6 +19,7 @@ gem 'will_paginate', ">=3.0.pre2"
 gem 'acts-as-taggable-on', :git => 'git://github.com/mbleigh/acts-as-taggable-on.git'
 gem "jquery-rails"
 gem 'acts_as_api'
+#gem 'ken'
 
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test

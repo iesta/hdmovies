@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110523154830) do
+ActiveRecord::Schema.define(:version => 20110524134336) do
 
   create_table "critics", :force => true do |t|
     t.integer  "user_id"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20110523154830) do
     t.boolean  "deleted"
     t.string   "storage"
     t.string   "freebase"
+    t.string   "wikipedia_url"
+    t.string   "traileraddict_url"
   end
 
   create_table "requests", :force => true do |t|

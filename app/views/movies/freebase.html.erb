@@ -1,1 +1,25 @@
-<%= debug @resource -%>
+<%= link_to 'back to film', movie_path -%> | <%= link_to 'save this data', freebase_movie_path(:save => true) -%> 
+
+<hr>
+<h1><%= @movie.title -%></h1>
+<h2>Ready for saving this data</h2>
+
+Genres : <%= @movie.genre_list -%>
+<hr>
+Cast : <%= @movie.cast -%>
+<hr>
+IMDB URL : <%= @movie.url_imdb -%>
+<hr>
+
+Apple URL : <%= @movie.apple_url -%>
+<hr>
+Youtube URL : <%= @movie.youtube_url -%>
+<hr>
+Wikipedia URL : <%= @movie.wikipedia_url -%>
+
+
+<h2>More data</h2>
+<%= @result.keys -%>
+<hr>
+<%= @movie.inspect -%>
+<hr>

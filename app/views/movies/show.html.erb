@@ -2,22 +2,6 @@
 	<h1 class="movie_title large_movie_title"><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
 <div class="clear"></div> 
-<div class="grid_12">
-	<div id="movie_menu" class="menu" style="float:left">
-	<% if current_user.superuser %>
-	<%= link_to 'Edit movie', edit_movie_path(@movie) %> 
-	<%= link_to 'Destroy movie', @movie, :confirm => "Are you sure?", :method => :delete %>
-	<%= link_to 'Freebase lookup', freebase_movie_path(@movie) %>
-	<% end %>
-	<% if current_user.movies.include?(@movie) %>
-	<%= link_to 'Remove from wishlist', remove_from_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
-	<% else %>
-	<%= link_to 'Add to my wishlist', add_to_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
-	<% end %>
-	</div>
-</div>
-
-<div class="clear"></div>
 
 <div class="grid_6"> 
 	<p> 
@@ -47,8 +31,8 @@
 		<b>Origin</b> <%= @movie.origin %>
 <br>
 		<b>Filename:</b>
-		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %>
-
+		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %><br>
+		<b>Freebase:</b> <%= link_to @movie.freebase, @movie.freebase %>
 		<br>
 		<b>Added by:</b>
 		<%= link_to @movie.user.username, @movie.user %>
@@ -60,6 +44,19 @@
 </div> 
 <!-- end .grid_4 --> 
 <div class="grid_6"> 
+		<div id="movie_menu" class="menu" style="float:left">
+		<% if current_user.superuser %>
+		<%= link_to 'Edit movie', edit_movie_path(@movie) %> 
+		<%= link_to 'Destroy movie', @movie, :confirm => "Are you sure?", :method => :delete %>
+		<%= link_to 'Freebase lookup', freebase_movie_path(@movie) %>
+		<% end %>
+		<% if current_user.movies.include?(@movie) %>
+		<%= link_to 'Remove from wishlist', remove_from_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+		<% else %>
+		<%= link_to 'Add to my wishlist', add_to_list_user_path(current_user, {:movie => @movie}) , :method => :post %>
+		<% end %>
+		</div>
+<br>
 	<p> 
 		<p>
 			<em><%= @movie.alt_title %></em>
@@ -76,6 +73,17 @@
 			<% else %>
 			<%= @movie.imdb_score -%>
 			<% end %>
+		</p>
+		
+		<p>
+			<b>Youtube url:</b>
+			<%= link_to @movie.youtube_url,@movie.youtube_url %><br>
+			<b>Apple url:</b>
+			<%= link_to @movie.apple_url,@movie.apple_url %><br>
+			<b>Wikipedia:</b>
+			<%= link_to @movie.wikipedia_url,@movie.wikipedia_url %><br>
+			<b>TrailerAddict:</b>
+			<%= link_to @movie.traileraddict_url,@movie.traileraddict_url %>
 		</p>
 		
 		<p>
@@ -99,13 +107,8 @@
 		</p>
 
 		<p>
-			<b>Origin:</b>
-
-		</p>
-
-		<p>
 			<b>Body:</b>
-			<%= @movie.body %>
+			<%= snippet(@movie.body) %>
 		</p>
 
 		<p>
@@ -113,30 +116,22 @@
 			<%= @movie.plot %>
 		</p>
 
-<!-- 		<p>
-			<b>Youtube url:</b>
-			<%= @movie.youtube_url %>
-		</p>
-
-		<p>
-			<b>Embed movie:</b>
-			<%= @movie.embed_movie %>
-		</p>
-
-		<p>
-			<b>Apple url:</b>
-			<%= @movie.apple_url %>
-		</p>
-
-		<p>
+<!--		<p>
 			<b>Amazon url:</b>
 			<%= @movie.amazon_url %>
 		</p>
+
+<p>
+	<b>Embed movie:</b>
+	<%= @movie.embed_movie %>
+</p>
+
 
 		<p>
 			<b>Url allocine:</b>
 			<%= @movie.url_allocine %>
 		</p> -->
+
 	</p> 
 
 <%= render :partial => "assets_links" -%>

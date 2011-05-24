@@ -6,3 +6,4 @@ tmp/sockets/*
 tmp/pids/*
 public/assets/*
 db/*.sqlite3
+.rvmrc

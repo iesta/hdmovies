@@ -96,20 +96,67 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
   
-  # try to get data from freebase
+  # try to get data from freebase and redirect to edit with some fields filled
+  # save still needs to be done
   def freebase
-#    require "#{RAILS_ROOT}/lib/ken/lib/ken"
-    require 'rubygems'
-    require 'ken/lib/ken'
-    @movie = Movie.find(params[:id])
-    if @movie.freebase
-      slug = '/en/' + @movie.freebase.split('/').last
-    else
-      slug = '/en/' + @movie.title.rstrip.gsub(/\s/,'_')
-    end
-    @resource = Ken.get(slug)
-    
-    
+    begin
+      @movie = Movie.find(params[:id])
+      
+      # TODO : put that in model
+#      slug = @movie.freebase.split('/').last
+      url = 'http://www.freebase.com/experimental/topic/standard' + @movie.freebase
+      logger.debug url
+      resp = Net::HTTP.get_response( URI.parse(url) )
+      #logger.debug resp.inspect
+      logger.debug resp.body
+      json = JSON.parse(resp.body)
+      logger.debug json
+      @result = json['result']
+      #logger.debug @result
+      raise unless @result
+    logger.debug @result.inspect
+      # see example of json to parse : http://www.freebase.com/experimental/topic/standard/m/09k56b7
+      @movie.country = @result['properties']['/film/film/country']['values'][0]['text']
+      @movie.body = @result['description']
+      @movie.genre_list = @result['properties']['/film/film/genre']['values'].map{|g| g['text']} #.join(',')
+      @movie.year = @result['properties']['/film/film/initial_release_date']['values'][0]['value'].split('-')[0]
+      @movie.director = @result['properties']['/film/film/directed_by']['values'].map{|g| g['text']}.join(', ')
+      @movie.cast = @result['properties']['/film/film/starring']['values'].map{|g| g['text'].split('-')[0].rstrip}.join(', ')
+      
+      @result['webpage'].each{|p|
+        @movie.url_imdb = p['url'] if p['text'] == 'IMDB Title Page'
+        @movie.apple_url = p['url'] if p['url'] =~ /trailers\.apple\.com/i
+        @movie.youtube_url = p['url'] if p['text'] =~ /youtube/i
+        @movie.wikipedia_url = p['url'] if p['text'] == 'Wikipedia'
+      }
+      if params[:save]=='true'
+        @movie.save
+        redirect_to(@movie, :notice => 'Data updated with ' + @movie.freebase)
+        return
+      end
+      
+=begin
+      if @movie.freebase
+        # its way better to have the code
+        slug = '/m/' + @movie.freebase.split('/').last
+      else
+        slug = '/en/' + @movie.title.rstrip.gsub(/\s/,'_').downcase
+      end
+      @resource = Ken.get(slug)
+      raise if @resource.nil?
+      @movie.director = @resource.attribute('/film/film/directed_by') unless @movie.director
+      @movie.year = @resource.attribute('/film/film/initial_release_date').to_s.split('-').first
+      @movie.country = @resource.attribute('/film/film/country').to_s.split(/\n/).first
+      @movie.plot = @resource.attribute('/film/film/tagline')
+      
+      puts @resource.attribute('/film/film/initial_release_date').to_s.split('-').first
+      puts @resource.attribute('/film/film/country')
+      puts @resource.attribute('/film/film/tagline')
+      #render 'edit'
+=end
+    rescue
+      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + slug)
+    end  
   end
 
   # POST /movies

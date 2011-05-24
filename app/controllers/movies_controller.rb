@@ -99,6 +99,7 @@ class MoviesController < ApplicationController
   # try to get data from freebase and redirect to edit with some fields filled
   # save still needs to be done
   def freebase
+	require 'net/http'
     begin
       @movie = Movie.find(params[:id])
       
@@ -154,8 +155,8 @@ class MoviesController < ApplicationController
       puts @resource.attribute('/film/film/tagline')
       #render 'edit'
 =end
-    rescue
-      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + @movie.freebase)
+#    rescue
+#      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + @movie.freebase)
     end  
   end
 

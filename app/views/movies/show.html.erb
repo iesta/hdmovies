@@ -1,6 +1,14 @@
-<div class="grid_12">
+<div class="grid_11">
 	<h1 class="movie_title large_movie_title"><%= @movie.tvserie ? 'Serie : ' : '' -%><%= @movie.title %> <% if @movie.year %>(<%= @movie.year %>)<% end %></h1>
 </div>
+<div class="grid_1" style="padding-top:14px">
+	<% if @movie.imdb_score %>
+		<div class="big_score">
+		<%= link_to @movie.imdb_score, @movie.url_imdb %>
+		</div> 
+	<% end %>
+</div>
+
 <div class="clear"></div> 
 <div class="grid_12">
 	<div id="movie_menu" class="menu" style="float:left">
@@ -62,6 +70,12 @@
 		<br>
 		<strong>In the wishlist of</strong> : <% for u in  @movie.users %><%= link_to u.username, user_path(u) -%> <% end %> 
 
+<% if current_user.superuser %>
+<form action="<%= url_for freebase_movie_path -%>" method="GET">
+Try freebase : <input type="text" name="freebase_slug" /><input type="submit" name="submit" value="Try" id="submit">
+</form>
+<% end %>
+
 	</p> 
 </div> 
 <!-- end .grid_4 --> 
@@ -76,15 +90,10 @@
 		</p>
 <% end %>
 		<p>
-			<b>Imdb:</b>
-			<% if @movie.url_imdb %>
-			<%= link_to @movie.imdb_score, @movie.url_imdb %>
-			<% else %>
-			<%= @movie.imdb_score -%>
+			<% if @movie.url_imdb && @movie.url_imdb.size>1 %>
+			<b>Imdb url:</b>
+			<%= link_to @movie.url_imdb,@movie.url_imdb %><br>
 			<% end %>
-		</p>
-		
-		<p>
 			<% if @movie.youtube_url && @movie.youtube_url.size>1 %>
 			<b>Youtube url:</b>
 			<%= link_to @movie.youtube_url,@movie.youtube_url %><br>

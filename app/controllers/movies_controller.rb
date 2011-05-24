@@ -102,19 +102,18 @@ class MoviesController < ApplicationController
     begin
       @movie = Movie.find(params[:id])
       
+      # if we get a slug, we update the row
+      if params[:freebase_slug]
+        @movie.update_attribute('freebase', params[:freebase_slug])
+      end
+      
       # TODO : put that in model
-#      slug = @movie.freebase.split('/').last
       url = 'http://www.freebase.com/experimental/topic/standard' + @movie.freebase
-      logger.debug url
       resp = Net::HTTP.get_response( URI.parse(url) )
-      #logger.debug resp.inspect
-      logger.debug resp.body
       json = JSON.parse(resp.body)
-      logger.debug json
       @result = json['result']
-      #logger.debug @result
       raise unless @result
-    logger.debug @result.inspect
+
       # see example of json to parse : http://www.freebase.com/experimental/topic/standard/m/09k56b7
       @movie.alt_title = @result['text']
       @movie.country = @result['properties']['/film/film/country']['values'][0]['text']
@@ -130,9 +129,10 @@ class MoviesController < ApplicationController
         @movie.youtube_url = p['url'] if p['text'] =~ /youtube/i
         @movie.wikipedia_url = p['url'] if p['text'] == 'Wikipedia'
       }
+
       if params[:save]=='true'
         @movie.save
-        redirect_to(@movie, :notice => 'Data updated with ' + @movie.freebase)
+        redirect_to(@movie, :notice => 'Data updated with ' + url)
         return
       end
       
@@ -155,8 +155,8 @@ class MoviesController < ApplicationController
       puts @resource.attribute('/film/film/tagline')
       #render 'edit'
 =end
-    rescue
-      redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + @movie.freebase)
+    #rescue
+    #  redirect_to(@movie, :notice => 'No data found on Freebase, you could change freebase code : ' + @movie.freebase)
     end  
   end
 

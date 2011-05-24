@@ -55,7 +55,7 @@
 	<td width="80" align="center" valign="top">
 	<% if movie.imdb_score %>
 		<div class="big_score">
-		<%= link_to movie.imdb_score, movie.url_imdb %>
+		<%= link_to movie.imdb_score, movie.url_imdb, :target => '_blank' %>
 		</div> 
 	<% end %>
 	</td>

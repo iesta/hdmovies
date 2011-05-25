@@ -1,3 +1,5 @@
 HDMovies is a small rails3 app to handle a collection of movies.
 
-The objective is to test Rails3, Jquery1.4 and some other gem and plugins.
+The objective is to test Rails3, Jquery, Node.js and some other gem and plugins.
+
+The system includes a very very basic freebase data fetching mechanism.

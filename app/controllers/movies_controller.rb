@@ -98,6 +98,7 @@ class MoviesController < ApplicationController
   
   # try to get data from freebase and redirect to edit with some fields filled
   # save still needs to be done
+  # GET /movies/1/freebase?freebase_slug=
   def freebase
     require 'net/http'
     begin

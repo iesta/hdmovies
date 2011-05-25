@@ -56,10 +56,8 @@
     </div>
   <%- end -%>
 
-<br>
-<% unless params[:action]=='new' %>
-<%= render :partial => "assets_links" -%>
-<% end %>
+<hr>
+
 </div>
   <div class="field">
     <%= f.label :title %><br />
@@ -117,7 +115,7 @@
 
   <div class="field">
     <%= f.label :filename %><br />
-    <%= f.text_field :filename , :size => 40 %> <%= f.check_box(:deleted) %> <%= f.label :deleted %>
+    <%= f.text_field :filename , :size => 40 %> <%= f.check_box(:deleted) %> <%= f.label :deleted %><br>
   </div>
 
   <div class="field">

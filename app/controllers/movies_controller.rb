@@ -99,6 +99,7 @@ class MoviesController < ApplicationController
   # try to get data from freebase and redirect to edit with some fields filled
   # save still needs to be done
   def freebase
+    require 'net/http'
     begin
       @movie = Movie.find(params[:id])
       

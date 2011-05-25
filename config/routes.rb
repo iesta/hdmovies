@@ -1,4 +1,8 @@
 Hdmovies::Application.routes.draw do |map|
+  get "home/index"
+
+  get "home/chat"
+
   resources :requests do
     member do
       post 'fill'
@@ -44,7 +48,7 @@ Hdmovies::Application.routes.draw do |map|
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
 
-  root :to => "movies#index"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

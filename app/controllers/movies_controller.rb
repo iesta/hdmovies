@@ -213,3 +213,4 @@ class MoviesController < ApplicationController
     @users_size = User.count
   end
 end
+

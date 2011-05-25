@@ -1,27 +1,30 @@
+<div class="grid_12">
+	<h3>Last new movies <a href="/movies">(see all movies)</a></h3>
+	<% for movie in @last_movies_new %>
+	<% if movie.photo_file_name %>
+	<a href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title) %> </a>
+	<% end %>
+	<% end %>
+</div>
 <div class="grid_7"> 
-	<h4>Last critics <a href="/critics">(see all)</a></h4>
+	<h3>Last critics <a href="/critics">(see all critics)</a></h3>
 	<% for critic in @last_critics %>
 	<%= link_to critic.user.username, user_path(critic.user) -%> has given a <strong><%= link_to critic.score.to_s + '/20', movie_path(critic.movie) -%></strong> on <strong><%= link_to critic.movie.title, movie_path(critic.movie) -%></strong><br>
 	<% end %>
 	
-	<h4>Last new movies <a href="/movies">(see all)</a></h4>
-	<% for movie in @last_movies_new %>
-	New movie added : <strong><%= link_to movie.title, movie_path(movie) -%></strong><br>
-	<% end %>
-	
-	<h4>Last edit in movies <a href="/movies">(see all)</a></h4>
+	<h3>Last edit in movies <a href="/movies">(see all movies)</a></h3>
 	<% for movie in @last_movies_edit %>
 	Movie edited : <strong><%= link_to movie.title, movie_path(movie) -%></strong><br>
 	<% end %>
 </div>
 
 <div class="grid_5"> 
-	<h4>Last visits</h4>
+	<h3>Last visits</h3>
 	<% for user in @last_visits %>
 	<%= link_to user.username, user_path(user) -%> : <%= distance_of_time_in_words(Time.now.to_i , user.last_request_at.to_i) -%> ago<br>
 	<% end %>
 	
-	<h4>Last tweets</h4>
+	<h3>Last tweets <a href="http://twitter.com/hdiesta">(twitter)</a></h3>
 	<div id="tweets">
 	</div>
 	<script type="text/javascript" src="/javascripts/jquery.tweetable.js"></script>

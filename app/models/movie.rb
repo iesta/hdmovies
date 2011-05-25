@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
   acts_as_api
-  
+
   api_accessible :base do |template|
     self.column_names.each{|c|
         template.add c.to_sym
@@ -63,5 +63,4 @@ class Movie < ActiveRecord::Base
  def base_photo_url
    "#{URL}#{self.photo.url}/".gsub('/original/','/large/')
  end
- 
 end

@@ -19,6 +19,13 @@
 </div>
 
 <div class="grid_5"> 
+	<h3>HDMovies@iesta</h3>
+	<p>
+		HDMovies@iesta est un petit soft opensource (<a href="https://github.com/iesta/hdmovies">github</a>) me permettant de tester les dernières techno Ruby on Rails 3.0, Jquery et Node.js tout en référençant des films en HD pour la plupart. 
+		<a href="https://convore.com/hdmovies/">>> Discussion ici <<</a><br>
+	</p>
+	<p>A venir : une chat room persistante (comme convore), un table des acteurs et metteurs en scènes, trailers, plus de pompages de données via imdb et allociné...</p>
+
 	<h3>Last visits</h3>
 	<% for user in @last_visits %>
 	<%= link_to user.username, user_path(user) -%> : <%= distance_of_time_in_words(Time.now.to_i , user.last_request_at.to_i) -%> ago<br>

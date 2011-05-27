@@ -2,7 +2,7 @@
 	<h3>Last new movies <a href="/movies">(see all movies)</a></h3>
 	<% for movie in @last_movies_new %>
 	<% if movie.photo_file_name %>
-	<a href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title) %> </a>
+	<a class="rumble" href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title) %> </a>
 	<% end %>
 	<% end %>
 </div>

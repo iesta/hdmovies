@@ -13,5 +13,7 @@ $(document).ready(function() {
 	    $('body').css( 'background', "url(/images/bg/sky-" + (i++) + ".jpg)" );
 //	    i++;
 		if(i>10) { i = 1 };
-	}, 10000);
+	}, 15000);
+	
+	$('.rumble').jrumble();
 });

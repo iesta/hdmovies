@@ -21,6 +21,9 @@ gem "jquery-rails"
 gem 'acts_as_api'
 #gem 'ken'
 
+# rake 0.9 has bugs
+gem 'rake', '~> 0.8.7'
+
 ## Bundle gems used only in certain environments:
 # gem "rspec", :group => :test
 # group :test do

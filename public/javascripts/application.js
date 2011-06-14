@@ -8,12 +8,13 @@ $(document).ready(function() {
 	});
 	
 	// some fun with the background :-)
+	/*
 	var i = 1;
 	var rotateBg = setInterval(function(){
 	    $('body').css( 'background', "url(/images/bg/sky-" + (i++) + ".jpg)" );
 //	    i++;
 		if(i>10) { i = 1 };
 	}, 15000);
-	
+	*/
 	$('.rumble').jrumble();
 });

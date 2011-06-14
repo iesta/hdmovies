@@ -2,8 +2,8 @@
 <html>
 <head>
 <title><% if @movie %><%= @movie.title -%><% else %>HDMovies<% end %></title>
-<%= stylesheet_link_tag 'movies','960' %>
-<%= javascript_include_tag :defaults, 'jrumble' %>
+<%= stylesheet_link_tag 'movies','960', :cache => "generated" %>
+<%= javascript_include_tag :defaults, 'jrumble', :cache => "generated" %>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <%= csrf_meta_tag %>
 </head>

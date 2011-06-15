@@ -25,15 +25,16 @@ class MoviesController < ApplicationController
           order = "title ASC"
         when 'year'
           order = "year DESC"
+        when 'average'
+          order = "average_score DESC"
         end
-        
       else
         order = "created_at DESC"
       end
       if params[:genre]
-        @movies = Movie.tagged_with(params[:genre]).order(order).paginate :per_page => 20, :page => params[:page]
+        @movies = Movie.tagged_with(params[:genre]).order(order).paginate(:per_page => 20, :page => params[:page]) unless @movies
       else
-        @movies = Movie.order(order).paginate :per_page => 20, :page => params[:page]
+        @movies = Movie.order(order).paginate(:per_page => 20, :page => params[:page]) unless @movies
       end
     end
 

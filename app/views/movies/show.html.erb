@@ -36,40 +36,56 @@
 		<%= image_tag(@movie.photo.url(:large), :alt => 'Photo', :title => 'Current photo') %><br>
 		<%- end -%>
 
-		<b>Quality:</b>
-		<%= @movie.quality %>
-		<br>
-
-		<b>Languages:</b>
-		<%= @movie.languages %>
-		<br>
-
-		<b>Subs:</b>
-		<%= @movie.subs %>
-		<br>
-
-		<b>Size:</b>
-		<%= @movie.size %> Gb
-		<br>
-
-		<b>Format:</b>
-		<%= @movie.format %>
-		<br>
-		<b>Origin</b> <%= @movie.origin %>
-<br>
-		<b>Filename:</b>
-		<% @movie.filename %> <% if @movie.deleted %>DELETED<% end %><br>
+<table border="1" cellspacing="0" cellpadding="2" class="xsmall border-collapse" width="90%">
+	<tr>
+		<td><b>Quality:</b></td>
+		<td><%= @movie.quality %></td>
 		
+		<td><b>Filename:</b></td>
+		<td><% @movie.filename %> <% if @movie.deleted %>DELETED<% end %></td>
+		
+	</tr>
+	<tr>
+		<td><b>Languages:</b></td>
+		<td><%= @movie.languages %></td>
+		
+		<td><b>Added by:</b></td>
+		<td><%= link_to @movie.user.username, @movie.user %></td>
+	</tr>
+	
+	<tr>
+		<td><b>Subs:</b></td>
+		<td><%= @movie.subs %></td>
+
+		<td><b>In the wishlist of:</b></td>
+		<td><% for u in  @movie.users %><%= link_to u.username, user_path(u) -%> <% end %> </td>
+	</tr>
+	
+	<tr>
+		<td><b>Format:</b></td>
+		<td><%= @movie.format %></td>
+
 		<% if @movie.freebase %>
-		<b>Freebase:</b> <%= link_to @movie.freebase, @movie.freebase %><br>
+		<td><b>Freebase:</b></td>
+		<td><%= link_to @movie.freebase, "http://www.freebase.com/view" + @movie.freebase %></td>
+		<% else %>
+		<td></td>
+		<td></td>
 		<% end %>
+	</tr>
+	
+	<tr>
+		<td><b>Origin</b></td>
+		<td><%= @movie.origin %></td>
 		
-		<b>Added by:</b>
-		<%= link_to @movie.user.username, @movie.user %>
-		<br>
-		<br>
-		<strong>In the wishlist of</strong> : <% for u in  @movie.users %><%= link_to u.username, user_path(u) -%> <% end %> 
+		<td></td>
+		<td></td>
+	</tr>
+	
+</table>
 
+<br>
+<br>
 <% if current_user.superuser %>
 <form action="<%= url_for freebase_movie_path -%>" method="GET">
 Try freebase : <input type="text" name="freebase_slug" /><input type="submit" name="submit" value="Try" id="submit">
@@ -162,7 +178,7 @@ Try freebase : <input type="text" name="freebase_slug" /><input type="submit" na
 
 
 
-	<H3><%= @movie.critics.size -%> Critics (average score : <%= number_with_precision(@movie.average, :precision => 2) -%> / 20)</h3>
+	<H3><%= @movie.critics.size -%> Critics (average score : <%= number_with_precision(@movie.average_score, :precision => 2) -%> / 20)</h3>
 
 		<% if current_user && !current_user.critic_on(@movie) %>
 		<% @critic = Critic.new(:movie_id => @movie.id) %>

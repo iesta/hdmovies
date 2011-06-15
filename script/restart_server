@@ -1,4 +1,10 @@
 #!/bin/sh
+echo "Killing running processes..."
 kill -s QUIT `cat tmp/pids/unicorn.pid`
-sleep 10
+echo "Sleeping a little bit..."
+sleep 20
+echo "Restarting processes..."
 unicorn_rails -c config/unicorn.rb -E production -D
+sleep 4
+echo "What is running now?"
+ps aux | grep jm | grep unicorn

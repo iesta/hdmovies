@@ -24,6 +24,8 @@ class Movie < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   validates_presence_of :title
+  
+  before_save :set_average_score
 
   def delete_photo=(value)
     @delete_photo = !value.to_i.zero?
@@ -40,6 +42,14 @@ class Movie < ActiveRecord::Base
   # Later in the model
   def clear_photo
     self.photo = nil if delete_photo? && !photo.dirty?
+  end
+
+  def update_average_score
+    update_attribute('average_score', self.average)
+  end
+
+  def set_average_score
+    self.average_score = self.average
   end
   
   # average of the critics || nil

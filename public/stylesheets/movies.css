@@ -41,11 +41,15 @@ a:hover { color: #000; text-decoration: underline; }
 }
 
 .small {
-	font-size:13px;
+	font-size: 13px;
 	font-weight: normal;
 }
 .large {
-	font-size:20px;
+	font-size: 20px;
+	font-weight: normal;
+}
+.xsmall, table.xsmall td {
+	font-size: 10px;
 	font-weight: normal;
 }
 
@@ -196,3 +200,4 @@ div.field, div.actions {
 hr {
 	border: 1px dashed lightgrey;
 }
+.border-collapse{border-collapse:collapse}

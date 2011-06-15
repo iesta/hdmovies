@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526164628) do
+ActiveRecord::Schema.define(:version => 20110615160436) do
 
   create_table "critics", :force => true do |t|
     t.integer  "user_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20110526164628) do
     t.string   "freebase"
     t.string   "wikipedia_url"
     t.string   "traileraddict_url"
-    t.string   "photo"
+    t.decimal  "average_score"
   end
 
   create_table "requests", :force => true do |t|

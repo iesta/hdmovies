@@ -7,3 +7,6 @@ tmp/pids/*
 public/assets/*
 db/*.sqlite3
 .rvmrc
+db/schema.rb
+public/stylesheets/generated.css
+public/javascripts/generated.css

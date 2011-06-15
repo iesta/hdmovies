@@ -1,28 +1,28 @@
 <div style="border:1px solid lightgrey">
-<table width="458" border="0" cellspacing="2" cellpadding="4">
-<tr>
-	<td colspan='2' style="background:lightgrey">
-		<span class="movie_title" style="font-size:24px"><%= link_to critic.movie.title, critic.movie %></span>
-	</td>
-</tr>
-<tr>
-	<td width="30%"><%= link_to( image_tag(critic.movie.photo.url(:small), :alt => critic.movie.title , :align => 'left'), critic.movie) -%></td>
-	<td valign='top'>
-		<p style="margin:0px"><%= critic.content %></p>
-	</td>
-</tr>
-<tr>
-	<td>
-			<% if critic.score %><div class="big_score score" style="width:75px"><a href="<%= url_for critic.movie -%>"><%= critic.score %>/20</div></a><% end %>
-	</td>
-	<td>
-		<p>
-			added on <%= dateformat(critic.created_at) -%> by <strong><%= link_to critic.user.username, critic.user %></strong>
-			<% if critic.user==current_user %>
-				<i><%= link_to "edit", edit_critic_path(critic, :return_to => 'critics') -%></i>
-			<% end %>
-		</p>
-	</td>
-</tr>
-</table>
+	<table width="458" border="0" cellspacing="2" cellpadding="4">
+	<tr>
+		<td colspan='2' style="background:lightgrey">
+			<span class="movie_title" style="font-size:24px"><%= link_to critic.movie.title, critic.movie %></span>
+		</td>
+	</tr>
+	<tr>
+		<td width="30%"><%= link_to( image_tag(critic.movie.photo.url(:small), :alt => critic.movie.title , :align => 'left'), critic.movie) -%></td>
+		<td valign='top'>
+			<p style="margin:0px"><%= critic.content %></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+				<% if critic.score %><div class="big_score score" style="width:75px"><a href="<%= url_for critic.movie -%>"><%= critic.score %>/20</div></a><% end %>
+		</td>
+		<td>
+			<p>
+				added on <%= dateformat(critic.created_at) -%> by <strong><%= link_to critic.user.username, critic.user %></strong>
+				<% if critic.user==current_user %>
+					<i><%= link_to "edit", edit_critic_path(critic, :return_to => 'critics') -%></i>
+				<% end %>
+			</p>
+		</td>
+	</tr>
+	</table>
 </div>

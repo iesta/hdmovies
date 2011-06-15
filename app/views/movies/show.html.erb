@@ -162,7 +162,7 @@ Try freebase : <input type="text" name="freebase_slug" /><input type="submit" na
 
 
 
-	<H3>Critics (<%= @movie.critics.size -%>)</h3>
+	<H3><%= @movie.critics.size -%> Critics (average score : <%= number_with_precision(@movie.average, :precision => 2) -%> / 20)</h3>
 
 		<% if current_user && !current_user.critic_on(@movie) %>
 		<% @critic = Critic.new(:movie_id => @movie.id) %>

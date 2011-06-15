@@ -1,7 +1,9 @@
-<h1>Critics of <%= @user.username -%></h1>
-<table border="0" cellspacing="5" cellpadding="5">
+<h1>Critics of <%= link_to @user.username, user_path(@user) -%></h1>
+<%= will_paginate @critics -%>
 <% for critic in @critics %>
+<div class="grid_6" style="padding-bottom:20px">
 <%= render :partial => '/critics/critic_tr', :locals => {:critic => critic} -%>
+</div>
 <% end %>
-</table>
+<div class="clear"></div> 
 <%= will_paginate @critics -%>

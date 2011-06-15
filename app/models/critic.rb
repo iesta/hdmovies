@@ -13,6 +13,12 @@ class Critic < ActiveRecord::Base
   belongs_to :user
   
   validates_numericality_of :score, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 20
+
+  after_save :update_movie_score
+  
+  def update_movie_score
+    self.movie.update_average_score
+  end
   
   # public url for api
    def public_url

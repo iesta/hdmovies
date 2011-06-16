@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'movies'
+  layout 'layout'
 
   # application_controller.rb
   filter_parameter_logging :password, :password_confirmation

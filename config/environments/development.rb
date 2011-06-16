@@ -23,4 +23,4 @@ Hdmovies::Application.configure do
 
 end
 
-URL = "http://localhost:4000"
+URL = "http://hdmovies.dev"

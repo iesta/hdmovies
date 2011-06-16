@@ -16,5 +16,4 @@ $(document).ready(function() {
 		if(i>10) { i = 1 };
 	}, 15000);
 	*/
-	$('.rumble').jrumble();
 });

@@ -13,6 +13,7 @@ Hdmovies::Application.routes.draw do |map|
     member do
       post 'add_to_list'
       post 'remove_from_list'
+      get 'remove_from_list'
       get  'critics'
       get  'mustsee'
     end

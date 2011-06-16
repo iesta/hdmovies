@@ -1,6 +1,6 @@
 body { 
 	background: #336699; 
-	background: url(/images/bg.png);
+	background: url(/images/bg.jpg);
 	background-repeat-x: initial;
 	background-repeat-y: initial;
 	color: #333; 
@@ -140,6 +140,9 @@ div.field, div.actions {
 	border-radius: 12px;
 	-webkit-border-radius: 12px;
 	-moz-border-radius: 12px;
+	-moz-box-shadow: 4px 4px 2px #000;
+	-webkit-box-shadow: 4px 4px 2px #000;
+	box-shadow: 4px 4px 2px #000;
 }
 /* paginator */
 .pagination {

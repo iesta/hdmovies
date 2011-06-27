@@ -30,6 +30,7 @@ Hdmovies::Application.routes.draw do |map|
   resources :movies do
     collection do
       get :rss
+      get :autocomplete_movie_title
     end
     member do
       get :freebase

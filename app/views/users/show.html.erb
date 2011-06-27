@@ -6,7 +6,7 @@
 <h2>Wants to see</h2>
 <% for movie in @user.movies %>
 <% if movie.photo_file_name %>
-<a class="rumble" href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title) %> </a>
+<a href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title, :class => 'autopic') %> </a>
 <% end %>
 <% end %>
 

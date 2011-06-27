@@ -20,6 +20,8 @@ gem 'acts-as-taggable-on', :git => 'git://github.com/mbleigh/acts-as-taggable-on
 gem "jquery-rails"
 gem 'acts_as_api'
 #gem 'ken'
+gem 'rails3-jquery-autocomplete'
+gem 'redcarpet'
 
 # rake 0.9 has bugs
 gem 'rake', '~> 0.8.7'

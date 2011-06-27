@@ -204,3 +204,11 @@ hr {
 	border: 1px dashed lightgrey;
 }
 .border-collapse{border-collapse:collapse}
+
+.autopic {
+	border: 2px solid white;
+	padding: 1px;
+}
+.autopic:hover {
+	border: 2px solid black;
+}

@@ -4,6 +4,8 @@ class MoviesController < ApplicationController
     controller.send(:require_user) unless (controller.request.format.rss? || controller.request.format.json?)
   end
   
+  autocomplete :movie, :title #, :extra_data => [:alt_title]
+  
   respond_to :html
   
   # GET /movies

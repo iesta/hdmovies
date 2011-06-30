@@ -11,20 +11,26 @@
 	<% for critic in @last_critics %>
 	<%= link_to critic.user.username, user_path(critic.user) -%> has given a <strong><%= link_to critic.score.to_s + '/20', movie_path(critic.movie) -%></strong> on <strong><%= link_to critic.movie.title, movie_path(critic.movie) -%></strong><br>
 	<% end %>
-	
+
 	<h3>Last edit in movies <a href="/movies">(see all movies)</a></h3>
 	<% for movie in @last_movies_edit %>
 	Movie edited : <strong><%= link_to movie.title, movie_path(movie) -%></strong><br>
 	<% end %>
-</div>
 
-<div class="grid_5"> 
 	<h3>HDMovies@iesta</h3>
 	<p>
 		HDMovies@iesta est un petit soft opensource (<a href="https://github.com/iesta/hdmovies">github</a>) me permettant de tester les dernières techno Ruby on Rails 3.0, Jquery et Node.js tout en référençant des films en HD pour la plupart. 
 		<a href="https://convore.com/hdmovies/">>> Discussion ici <<</a><br>
 	</p>
-	<p>A venir : une chat room persistante (comme convore), un table des acteurs et metteurs en scènes, trailers, plus de pompages de données via imdb et allociné...</p>
+
+
+</div>
+
+<div class="grid_5"> 
+	<h3>Last requests <a href="/requests">(see all requests)</a></h3>
+	<% for request in @last_requests %>
+	<strong><%= link_to request.name, request.url, :target => '_blank' -%></strong> asked by <%= link_to request.user.username, user_path(request.user) -%></a><br>
+	<% end %>
 
 	<h3>Last visits</h3>
 	<% for user in @last_visits %>

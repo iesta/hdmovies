@@ -7,7 +7,7 @@ class CriticsController < ApplicationController
   # GET /critics
   # GET /critics.xml
   def index
-    @critics = Critic.order('created_at DESC').paginate :per_page => 40, :page => params[:page]
+    @critics = Critic.order('updated_at DESC').paginate :per_page => 40, :page => params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

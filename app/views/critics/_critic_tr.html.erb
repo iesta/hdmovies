@@ -19,7 +19,7 @@
 			<p>
 				added on <%= dateformat(critic.created_at) -%> by <strong><%= link_to critic.user.username, critic.user %></strong>
 				<% if critic.user==current_user %>
-					<i><%= link_to "edit", edit_critic_path(critic, :return_to => 'critics') -%></i>
+					<i><%= link_to "edit", edit_critic_path(critic, :return_to => 'critics'), :class => "button inline" -%></i>
 				<% end %>
 			</p>
 		</td>

@@ -54,7 +54,7 @@ a:hover { color: #000; text-decoration: underline; }
 }
 
 .movie_title {
-	font-family: 'Lobster', arial, serif;
+	font-family: 'Love Ya Like A Sister', arial, serif;
 	font-size: 28px;
 }
 .large_movie_title {
@@ -211,4 +211,10 @@ hr {
 }
 .autopic:hover {
 	border: 2px solid black;
+}
+
+/* H3 home */
+h3.fancy{
+font-family: 'Love Ya Like A Sister', arial, serif;
+font-size: 22px;
 }

@@ -1,5 +1,5 @@
 <div class="grid_12">
-	<h3>Last new movies <a href="/movies" class="button inline" style="float:right">see all movies</a></h3>
+	<h3 class="fancy">Last new movies <a href="/movies" class="button inline" style="float:right">see all movies</a></h3 class="fancy">
 	<% for movie in @last_movies_new %>
 	<% if movie.photo_file_name %>
 	<a href="/movies/<%= movie.id -%>"><%= image_tag(movie.photo.url(:small), :alt => movie.title, :class => "autopic") %> </a>
@@ -8,17 +8,17 @@
 </div>
 <div class="clear"></div>
 <div class="grid_7"> 
-	<h3>Last critics <a href="/critics" class="button inline" style="float:right">see all critics</a></h3>
+	<h3 class="fancy">Last critics <a href="/critics" class="button inline" style="float:right">see all critics</a></h3 class="fancy">
 	<% for critic in @last_critics %>
 	<%= link_to critic.user.username, user_path(critic.user) -%> has given a <strong><%= link_to critic.score.to_s + '/20', movie_path(critic.movie) -%></strong> on <strong><%= link_to critic.movie.title, movie_path(critic.movie) -%></strong><br>
 	<% end %>
 
-	<h3>Last edit in movies <a href="/movies" class="button inline" style="float:right">see all movies</a></h3>
+	<h3 class="fancy">Last edit in movies <a href="/movies" class="button inline" style="float:right">see all movies</a></h3 class="fancy">
 	<% for movie in @last_movies_edit %>
 	Movie edited : <strong><%= link_to movie.title, movie_path(movie) -%></strong><br>
 	<% end %>
 
-	<h3>HDMovies@iesta</h3>
+	<h3 class="fancy">HDMovies@iesta</h3 class="fancy">
 	<p>
 		HDMovies@iesta est un petit soft opensource (<a href="https://github.com/iesta/hdmovies">github</a>) me permettant de tester les dernières techno Ruby on Rails 3.0, Jquery et Node.js tout en référençant des films en HD pour la plupart. 
 		<a href="https://convore.com/hdmovies/">>> Discussion ici <<</a><br>
@@ -28,17 +28,17 @@
 </div>
 <div class="grid_1">&nbsp; </div>
 <div class="grid_4"> 
-	<h3>Last requests <a href="/requests" class="button inline" style="float:right">see all requests</a></h3>
+	<h3 class="fancy">Last requests <a href="/requests" class="button inline" style="float:right">see all requests</a></h3 class="fancy">
 	<% for request in @last_requests %>
 	<strong><%= link_to request.name, request.url, :target => '_blank' -%></strong> asked by <%= link_to request.user.username, user_path(request.user) -%></a><br>
 	<% end %>
 
-	<h3>Last visits</h3>
+	<h3 class="fancy">Last visits</h3 class="fancy">
 	<% for user in @last_visits %>
 	<%= link_to user.username, user_path(user) -%> : <%= distance_of_time_in_words(Time.now.to_i , user.last_request_at.to_i) -%> ago<br>
 	<% end %>
 	
-	<h3>Last tweets <a href="http://twitter.com/hdiesta" class="button inline" style="float:right">twitter</a></h3>
+	<h3 class="fancy">Last tweets <a href="http://twitter.com/hdiesta" class="button inline" style="float:right">twitter</a></h3 class="fancy">
 	<div id="tweets">
 	</div>
 	<script type="text/javascript" src="/javascripts/jquery.tweetable.js"></script>
@@ -54,5 +54,6 @@
 <div class="clear"></div>
 <div class="grid_12">
 	<br><br>
+	<h3 class="fancy">Facebook comments</h3>
 	<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="hd.iesta.com" num_posts="2" width="930"></fb:comments>
 </div>

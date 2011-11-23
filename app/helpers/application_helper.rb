@@ -19,11 +19,15 @@ module ApplicationHelper
   def snippet(thought,wc=50)
     wordcount = wc
     thought.split[0..(wordcount-1)].join(" ") + (thought.split.size > wordcount ? "..." : "")
+  rescue
+    ""
   end
   
   def markdown(text)
     options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
     Redcarpet.new(text, *options).to_html.html_safe
+  rescue
+    ""
   end
 
 end

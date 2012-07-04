@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -46,10 +47,6 @@ ActiveRecord::Schema.define(:version => 20110615160436) do
     t.string   "amazon_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "main_img_file_name"
-    t.string   "main_img_content_type"
-    t.integer  "main_img_file_size"
-    t.datetime "main_img_updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -92,8 +89,26 @@ ActiveRecord::Schema.define(:version => 20110615160436) do
     t.string "name"
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'bool' for column 'supesuser'
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.string   "single_access_token",                :null => false
+    t.string   "perishable_token",                   :null => false
+    t.integer  "login_count",         :default => 0, :null => false
+    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "supesuser"
+    t.boolean  "superuser"
+  end
 
   create_table "users_movies", :id => false, :force => true do |t|
     t.integer  "user_id"

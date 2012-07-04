@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery_ujs
+//= require_self
+//= require_tree .
+
 $(document).ready(function() {
 	// we catch 'f' and 's' keypresses only of no input nor textarea selected
 	$('body').keypress(function(event) {

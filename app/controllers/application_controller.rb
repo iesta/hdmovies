@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   layout 'layout'
 
   # application_controller.rb
-  filter_parameter_logging :password, :password_confirmation
+  # filter_parameter_logging :password, :password_confirmation
 
   helper_method :current_user, :current_user_session
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     $0 = "hdm_: " + request.path[0,20]
   end
   
-  before_filter :adjust_format_for_iphone
+  #before_filter :adjust_format_for_iphone
 
   private
 
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = request.request_uri
+    session[:return_to] = request.url
   end
 
   def redirect_back_or_default(default)

@@ -1,0 +1,13 @@
+LOG:  database system was shut down at 2012-07-04 12:31:45 CEST
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  permission denied to create database
+STATEMENT:  CREATE DATABASE hdiesta;
+	
+FATAL:  database "hdiesta" does not exist
+FATAL:  database "hdiesta" does not exist
+ERROR:  permission denied to create database
+STATEMENT:  CREATE DATABASE hdiesta;
+	
+FATAL:  database "hdiesta" does not exist
+FATAL:  database "hdiesta" does not exist
